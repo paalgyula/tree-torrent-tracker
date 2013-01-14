@@ -241,7 +241,8 @@ select {
 
 .table {
 	display: table;
-	width: 901px;
+	width: 903px;
+    border-spacing: 1px;
 	margin: 0 auto;
 	margin-top: 1px;
 }
@@ -254,36 +255,48 @@ select {
 	display: table-cell;
 }
 
-.table .row .cell .caption {
-	display: table;
+.table .row.even .caption {
+    background-color: #616161;
+}
+
+.table .row.odd .caption {
+    background-color: #545454;
+}
+
+
+.table .row .caption {
+	display: table-cell;
 	border: #818181 1px solid;
-	margin-right: 1px;
+    border-spacing: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
-.table .row .cell .caption .caption-left {
+.table .row .caption.c {
+    text-align: center;
+}
+
+.table .row .cell .caption-left {
 	width: 8px;
 	height: 20px;
 	display: table-cell;
-	background-image: url(../images/tree-captionbox-left.png);
-	background-repeat: no-repeat;
+    background: url(../images/tree-captionbox-left.png) no-repeat;
 }
 
-.table .row .cell .caption .caption-right {
+.table .row .cell .caption-right {
 	width: 8px;
 	height: 20px;
 	display: table-cell;
-	background-image: url(../images/tree-captionbox-right.png);
-	background-repeat: no-repeat;
+    background: url(../images/tree-captionbox-right.png) no-repeat;
 }
 
-.table .row .cell .caption .caption-bg {
+.table .row .cell .caption-bg {
 	height: 20px;
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
-	background-image: url(../images/tree-captionbox-bg.png);
-	background-repeat: repeat-x;
 	font-weight: bold;
+    background: url(../images/tree-captionbox-bg.png) repeat-x left center;
 }
 
 .table .row .torrent_image {
@@ -305,20 +318,6 @@ select {
 	width: 848px;
 	margin: 0px;
 	padding: 0px;
-}
-
-.table .row .class1 {
-	margin-left: 1px;
-	height: 32px;
-	border: #818181 1px solid;
-	background-color: #616161;
-}
-
-.table .row .class12 {
-	margin-left: 1px;
-	height: 32px;
-	border: #818181 1px solid;
-	background-color: #545454;
 }
 
 .torrent_details .nev_container {
@@ -398,9 +397,8 @@ select {
 
 .pager {
 	text-align: center;
-	font-weight: bold;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 2px;
+	padding-bottom: 5px;
 }
 
 /* login resz */

@@ -17,4 +17,8 @@
         <put-attribute name="body" value="/WEB-INF/views/register/register.jsp"/>
     </definition>
 
+    <definition name="torrents.list" extends="main">
+        <put-attribute name="title" value="Torrent Lista"/>
+        <put-attribute name="body" value="/WEB-INF/views/torrents/list.jsp"/>
+    </definition>
 </tiles-definitions>

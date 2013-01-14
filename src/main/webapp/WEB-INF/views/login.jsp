@@ -11,13 +11,14 @@
                 <div class="row">
                     <div class="label"></div>
                     <div class="field">
-                        <img src="<spring:url value="/images/vizjel.png"/>" alt="TheTree&trade;"
-                             title="TheTree&trade;"/>
+                        <img src="<spring:url value="/images/vizjel.png"/>" alt="TheTree&trade;" title="TheTree&trade;"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="label">Felhasználónév:</div>
-                    <div class="field"><input type="text" name="j_username"/></div>
+                    <div class="field">
+                        <input type="text" name="j_username" value="${SPRING_SECURITY_LAST_USERNAME}"/>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="label">Jelszó:</div>

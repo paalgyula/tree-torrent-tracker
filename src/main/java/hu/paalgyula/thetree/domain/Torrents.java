@@ -20,6 +20,10 @@ public class Torrents {
     @Column
     private String name;
 
+    @JoinColumn(name = "category_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Category category;
+
     @Column(name = "checked")
     private boolean checked = false;
 
@@ -44,6 +48,10 @@ public class Torrents {
     @Lob
     @Column(name="description")
     private String description;
+
+    @JoinColumn(name = "uploader")
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private Users uploader;
 
     public Long getId() {
         return id;
@@ -123,5 +131,21 @@ public class Torrents {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Users getUploader() {
+        return uploader;
+    }
+
+    public void setUploader(Users uploader) {
+        this.uploader = uploader;
     }
 }

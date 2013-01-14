@@ -22,6 +22,8 @@
         <security:intercept-url pattern="/Login" access="permitAll"/>
         <security:intercept-url pattern="/Register" access="permitAll"/>
         <security:intercept-url pattern="/login.tt" access="permitAll"/>
+        <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
+        <security:intercept-url pattern="/robots.txt" access="permitAll"/>
 
         <security:intercept-url pattern="/images/**" access="permitAll"/>
         <security:intercept-url pattern="/js/**" access="permitAll"/>
