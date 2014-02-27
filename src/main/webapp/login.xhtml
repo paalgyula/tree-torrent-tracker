@@ -1,0 +1,56 @@
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="index.xhtml">
+    <ui:define name="body">
+        <div class="large_window_top">
+            <div class="legend">Belépés</div>
+        </div>
+        <div class="large_window_bevel">
+            <div class="content">
+                <br/><br/>
+                <h:form method="post" action="${loginAction}" id="loginForm">
+                    <div id="loginBox">
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field">
+                                <img src="resources/images/vizjel.png" alt="TheTree™" title="TheTree™"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Felhasználónév:</div>
+                            <div class="field">
+                                <input type="text" name="j_username" value="${SPRING_SECURITY_LAST_USERNAME}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Jelszó:</div>
+                            <div class="field"><input type="password" name="j_password"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Maradjon bejelentkezve:</div>
+                            <div class="field"><input type="checkbox" name="j_remember_me"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field"><span class="errorstring">${hibauzenet}</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="label" style="text-align:right">
+                                <input type="submit" style="visibility: hidden" id="submitBtn"/>
+                            </div>
+                            <div class="field">
+                                <div class="button" onclick="document.getElementById('submitBtn').click();">
+                                    <div class="button-left"></div>
+                                    <div class="content">belépés</div>
+                                    <div class="button-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+                <br/><br/>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

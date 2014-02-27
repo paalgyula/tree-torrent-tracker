@@ -1,0 +1,102 @@
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="index.xhtml">
+    <ui:define name="body">
+        <div class="large_window_top">
+            <div class="legend">Regisztráció</div>
+        </div>
+        <div class="large_window_bevel">
+            <div class="content">
+                <br/><br/>
+                <h:form method="post" id="registerForm" useToken="true" commandName="user">
+                    <div id="loginBox">
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field">
+                                <h:graphicImage value="/resources/images/vizjel.png" alt="TheTree™" title="TheTree™"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <h:outputLabel for="username" value="Felhasználónév:"/>
+                            </div>
+                            <div class="field">
+                                <h:inputText id="username"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <h:outputLabel for="password" value="Jelszó:"/>
+                            </div>
+                            <div class="field">
+                                <h:inputSecret id="password"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <h:outputLabel for="password2" value="Jelszó megismételve:"/>
+                            </div>
+                            <div class="field">
+                                <h:inputSecret id="password2"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <h:outputLabel for="email" value="E-Mail cím:"/>
+                            </div>
+                            <div class="field">
+                                <h:inputSecret id="email"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">E-Mail cím megismételve:</div>
+                            <div class="field"><input type="text" name="treeEmail2" value="${params.treeEmail2}"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Neme:</div>
+                            <div class="field">
+                                <select name="treeSex">
+                                    <option value="0" selected="selected">Férfi</option>
+                                    <option value="1">Nő</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field">
+                        <span class="errorstring">
+                            <h:messages styleClass="errorstring" element="span"/>
+                            ${hibauzenet}
+                        </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Elmúltam 13 éves:</div>
+                            <div class="field"><input type="checkbox" name="past13"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Elfogadom a felhasználási feltételeket:</div>
+                            <div class="field"><input type="checkbox" name="agreeTerms"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field">
+                                <input type="submit" style="display: none" id="btn"/>
+
+                                <div class="button" onclick="document.getElementById('btn').click();">
+                                    <div class="button-left"></div>
+                                    <div class="content">regisztráció</div>
+                                    <div class="button-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+                <br/><br/>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
