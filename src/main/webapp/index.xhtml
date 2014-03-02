@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:tt="http://gw-systems.com/taglib/thetree"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+      lang="en">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="robots" content="none noindex nofollow"/>
     <meta name="author" content="Paál Gyula [http://www.paalgyula.hu]"/>
     <meta name="copyright" content="2013, GW-Systems Kft."/>
     <meta name="description" content="TheTree Torrent Tracker"/>
-    <title>TheTree <ui:insert name="title"> - Főoldal</ui:insert></title>
+    <title>TheTree™ <ui:insert name="title"> - Főoldal</ui:insert></title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <h:outputStylesheet library="css" name="main.css"/>
     <link rel="stylesheet" media="screen" href="css/main.css"/>
     <script type="text/javascript" src="js/jquery.min.js"></script>
 </h:head>
@@ -26,34 +30,33 @@
                     <div class="left"></div>
                     <div class="bg">
                         <h:panelGroup rendered="true">
-                            <h:link outcome="login" styleClass="nyilas_hivatkozas" value="Belépés"/>
-                            <h:link outcome="register" styleClass="nyilas_hivatkozas" value="Regisztráció"/>
+                            <h:link outcome="/users/login" styleClass="nyilas_hivatkozas" value="Belépés"/>
+                            <h:link outcome="/users/register" styleClass="nyilas_hivatkozas" value="Regisztráció"/>
                         </h:panelGroup>
-                        <!--sec:authorize access="isAuthenticated()">
-                                    <a href="<spring:url value="/index.tt"/>" class="nyilas_hivatkozas">Főoldal</a>
-                                        <a href="<spring:url value="/letoltes.tt"/>" class="nyilas_hivatkozas">Letöltés
-                                    </a>
-                                <g:link controller="torrents" action="upload" class="nyilas_hivatkozas">Feltöltés</g:link>
-                                <g:link controller="index" class="nyilas_hivatkozas">Kérések</g:link>
-                                <g:link controller="index" class="nyilas_hivatkozas">Top10</g:link>
-                                <g:link controller="index" class="nyilas_hivatkozas">Fórum</g:link>
-                                <g:link controller="index" class="nyilas_hivatkozas">Wiki</g:link>
-                                <g:link controller="users" action="list" class="nyilas_hivatkozas">Felhasználók</g:link>
-                                <g:link controller="bug" action="index" class="nyilas_hivatkozas purple">Bugreport</g:link>
-                                <a href="<spring:url value="/Logout"/>" class="nyilas_hivatkozas">Kilépés</a>
-                            </sec:authorize-->
+                        <h:panelGroup rendered="true">
+                            <a href="/index.tt" class="nyilas_hivatkozas">Főoldal</a>
+                            <h:link outcome="/torrents/search" styleClass="nyilas_hivatkozas">Letöltés</h:link>
+                            <h:link outcome="upload" styleClass="nyilas_hivatkozas">Feltöltés</h:link>
+                            <h:link outcome="/requests" styleClass="nyilas_hivatkozas">Kérések</h:link>
+                            <h:link outcome="/top10" styleClass="nyilas_hivatkozas">Top10</h:link>
+                            <h:link outcome="/forum/index" styleClass="nyilas_hivatkozas">Fórum</h:link>
+                            <h:link outcome="/wiki/index" styleClass="nyilas_hivatkozas">Wiki</h:link>
+                            <h:link outcome="/users/list" styleClass="nyilas_hivatkozas">Felhasználók</h:link>
+                            <h:link outcome="/bugs/index" styleClass="nyilas_hivatkozas purple">Bugreport</h:link>
+                            <a href="/Logout" class="nyilas_hivatkozas">Kilépés</a>
+                        </h:panelGroup>
                     </div>
 
                     <div class="right"></div>
                 </div>
                 <div class="decor_separator"></div>
-                <h:panelGroup rendered="false">
+                <h:panelGroup rendered="true">
                     <div id="usercontrol">
                         <div class="left">
-                            ${user.username}
+                            #{trackerUser.username}
                             <a href="${userLink}">${user.username}</a>
                             (${user.title}) Pontok: <a
-                                href="#">${user.points}</a>, Arany: 0.00 Fel: {tt:formatBytes(user.uploaded)} Le: {tt:formatBytes(user.downloaded)} [<a
+                                href="#">${user.points}</a>, Arany: 0.00 Fel: # {tt:asdasd(trackerUser.uploaded)} Le: # {tt:formatBytes(trackerUser.downloaded)} [<a
                                 href="#">Tamogatas</a>]
                         </div>
                     </div>

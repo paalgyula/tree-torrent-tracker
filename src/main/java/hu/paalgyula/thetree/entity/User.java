@@ -1,5 +1,6 @@
 package hu.paalgyula.thetree.entity;
 
+import java.security.Principal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "users")
-public class Users {
+public class User implements Principal {
 
     @Id
     @GeneratedValue
@@ -140,5 +141,11 @@ public class Users {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    @Transient
+    public String getName() {
+        return this.username;
     }
 }

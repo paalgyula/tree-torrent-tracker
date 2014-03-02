@@ -27,7 +27,7 @@ public class Category {
     private String image;
 
     @OneToMany(mappedBy = "category")
-    private List<Torrents> torrents;
+    private List<Torrent> torrents;
 
     public Category() {
     }
@@ -52,11 +52,11 @@ public class Category {
         this.category = category;
     }
 
-    public List<Torrents> getTorrents() {
+    public List<Torrent> getTorrents() {
         return torrents;
     }
 
-    public void setTorrents(List<Torrents> torrents) {
+    public void setTorrents(List<Torrent> torrents) {
         this.torrents = torrents;
     }
 
@@ -66,5 +66,15 @@ public class Category {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Category) {
+            return ((Category) obj).getId().equals(this.id);
+        } else if (obj instanceof Long) {
+            return obj.equals(this.id);
+        }
+        return super.equals(obj);
     }
 }

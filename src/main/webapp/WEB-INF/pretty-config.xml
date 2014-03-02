@@ -5,11 +5,11 @@
 
     <url-mapping id="Login">
         <pattern value="/Login"/>
-        <view-id value="/login.xhtml"/>
+        <view-id value="/users/login.xhtml"/>
     </url-mapping>
     <url-mapping id="Register">
         <pattern value="/Register"/>
-        <view-id value="/register.xhtml"/>
+        <view-id value="/users/register.xhtml"/>
     </url-mapping>
 
 </pretty-config>

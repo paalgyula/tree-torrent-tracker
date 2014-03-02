@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-<ui:composition template="index.xhtml">
+<ui:composition template="../index.xhtml">
     <ui:define name="body">
         <div class="large_window_top">
             <div class="legend">Regisztráció</div>
@@ -8,7 +9,7 @@
         <div class="large_window_bevel">
             <div class="content">
                 <br/><br/>
-                <h:form method="post" id="registerForm" useToken="true" commandName="user">
+                <h:form id="registerForm">
                     <div id="loginBox">
                         <div class="row">
                             <div class="label"></div>
@@ -21,7 +22,7 @@
                                 <h:outputLabel for="username" value="Felhasználónév:"/>
                             </div>
                             <div class="field">
-                                <h:inputText id="username"/>
+                                <h:inputText value="#{newUser.username}" id="username"/>
                             </div>
                         </div>
                         <div class="row">
@@ -29,7 +30,7 @@
                                 <h:outputLabel for="password" value="Jelszó:"/>
                             </div>
                             <div class="field">
-                                <h:inputSecret id="password"/>
+                                <h:inputSecret value="#{newUser.password}" id="password"/>
                             </div>
                         </div>
                         <div class="row">
@@ -37,7 +38,7 @@
                                 <h:outputLabel for="password2" value="Jelszó megismételve:"/>
                             </div>
                             <div class="field">
-                                <h:inputSecret id="password2"/>
+                                <h:inputSecret value="#{newUser.password2}" id="password2"/>
                             </div>
                         </div>
                         <div class="row">
@@ -45,12 +46,16 @@
                                 <h:outputLabel for="email" value="E-Mail cím:"/>
                             </div>
                             <div class="field">
-                                <h:inputSecret id="email"/>
+                                <h:inputSecret value="#{newUser.email}" id="email"/>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="label">E-Mail cím megismételve:</div>
-                            <div class="field"><input type="text" name="treeEmail2" value="${params.treeEmail2}"/></div>
+                            <div class="label">
+                                <h:outputLabel for="email2">E-Mail cím megismételve:</h:outputLabel>
+                            </div>
+                            <div class="field">
+                                <h:inputText id="email2" type="text"/>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="label">Neme:</div>
@@ -67,8 +72,7 @@
                             <div class="label"></div>
                             <div class="field">
                         <span class="errorstring">
-                            <h:messages styleClass="errorstring" element="span"/>
-                            ${hibauzenet}
+                            <h:messages fatalClass="errorstring" globalOnly="false"/>
                         </span>
                             </div>
                         </div>
@@ -83,13 +87,11 @@
                         <div class="row">
                             <div class="label"></div>
                             <div class="field">
-                                <input type="submit" style="display: none" id="btn"/>
-
-                                <div class="button" onclick="document.getElementById('btn').click();">
+                                <h:commandLink styleClass="button" action="#{registerController.register}">
                                     <div class="button-left"></div>
                                     <div class="content">regisztráció</div>
                                     <div class="button-right"></div>
-                                </div>
+                                </h:commandLink>
                             </div>
                         </div>
                     </div>

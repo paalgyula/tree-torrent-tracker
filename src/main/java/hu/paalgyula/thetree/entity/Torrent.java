@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "torrents")
-public class Torrents {
+public class Torrent {
     @Id
     @GeneratedValue
     private Long id;
@@ -21,7 +21,7 @@ public class Torrents {
     private String name;
 
     @JoinColumn(name = "category_id")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
     @Column(name = "checked")
@@ -51,7 +51,7 @@ public class Torrents {
 
     @JoinColumn(name = "uploader")
     @ManyToOne(cascade = CascadeType.REMOVE)
-    private Users uploader;
+    private User uploader;
 
     public Long getId() {
         return id;
@@ -141,11 +141,11 @@ public class Torrents {
         this.category = category;
     }
 
-    public Users getUploader() {
+    public User getUploader() {
         return uploader;
     }
 
-    public void setUploader(Users uploader) {
+    public void setUploader(User uploader) {
         this.uploader = uploader;
     }
 }
