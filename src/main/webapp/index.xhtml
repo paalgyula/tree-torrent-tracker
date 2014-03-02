@@ -1,91 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:tt="http://gw-systems.com/taglib/thetree"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
-      lang="en">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="robots" content="none noindex nofollow"/>
-    <meta name="author" content="Paál Gyula [http://www.paalgyula.hu]"/>
-    <meta name="copyright" content="2013, GW-Systems Kft."/>
-    <meta name="description" content="TheTree Torrent Tracker"/>
-    <title>TheTree™ <ui:insert name="title"> - Főoldal</ui:insert></title>
-    <link rel="icon" href="#{resource['/images/favicon.png']}" type="image/png"/>
-    <link rel="shortcut icon" href="#{resource['/images/favicon.png']}" type="image/png"/>
-    <h:outputStylesheet library="css" name="main.css"/>
-    <link rel="stylesheet" media="screen" href="css/main.css"/>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-</h:head>
-<h:body>
-    <div id="main_background">
-        <div id="main_placeholder">
-            <div id="content">
-                <div class="decor_blue"></div>
-                <div class="decor_separator"></div>
-                <div id="header"></div>
-                <div class="decor_separator"></div>
-                <div class="menu">
-                    <div class="left"></div>
-                    <div class="bg">
-                        <h:panelGroup rendered="#{empty trackerUser}">
-                        <h:link outcome="/users/login" styleClass="nyilas_hivatkozas" value="Belépés"/>
-                            <h:link outcome="/users/register" styleClass="nyilas_hivatkozas" value="Regisztráció"/>
-                        </h:panelGroup>
-                        <h:panelGroup rendered="#{not empty trackerUser}">
-                            <h:link outcome="/index" styleClass="nyilas_hivatkozas">Főoldal</h:link>
-                            <h:link outcome="/torrents/search" styleClass="nyilas_hivatkozas">Letöltés</h:link>
-                            <h:link outcome="/torrents/upload" styleClass="nyilas_hivatkozas">Feltöltés</h:link>
-                            <h:link outcome="/torrents/requests" styleClass="nyilas_hivatkozas">Kérések</h:link>
-                            <h:link outcome="/top10" styleClass="nyilas_hivatkozas">Top10</h:link>
-                            <h:link outcome="/forum/index" styleClass="nyilas_hivatkozas">Fórum</h:link>
-                            <h:link outcome="/wiki/index" styleClass="nyilas_hivatkozas">Wiki</h:link>
-                            <h:link outcome="/users/list" styleClass="nyilas_hivatkozas">Felhasználók</h:link>
-                            <h:link outcome="/bugs/index" styleClass="nyilas_hivatkozas purple">Bugreport</h:link>
-                            <a href="/Logout" class="nyilas_hivatkozas">Kilépés</a>
-                        </h:panelGroup>
-                    </div>
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/templates/main-layout.xhtml">
+    <ui:define name="body">
 
-                    <div class="right"></div>
-                </div>
-                <div class="decor_separator"></div>
-                <h:panelGroup rendered="true">
-                    <div id="usercontrol">
-                        <div class="left">
-                            <a href="${userLink}">#{trackerUser.username}</a>
-                            (#{trackerUser.title})
-                            Pontok: <a href="#">#{trackerUser.points}</a>,
-                            Arány: 0.00
-                            Fel: #{tt:formatBytes(trackerUser.uploaded)}
-                            Le: #{tt:formatBytes(trackerUser.downloaded)}
-                            [<a href="#">Támogatás</a>]
-                        </div>
-                    </div>
-                </h:panelGroup>
-
-                <div class="decor_blue"></div>
-                <div id="topBg">
-                    <br/><br/>
-                    <ui:insert name="body">
-                        [ Body content goes here ]
-                    </ui:insert>
-                </div>
-                <div id="bg_placeholder"></div>
-            </div>
-            <div id="footer">
-                <div class="decor_separator"></div>
-                <div class="menu">
-                    <div class="left"></div>
-                    <div class="bg">
-                        <small>TheTree Torrent tracker r<i>152</i> | Hosted@OpenShift - Powered: GW-Systems Kft.</small>
-                    </div>
-                    <div class="right"></div>
-                </div>
-                <div class="decor_separator"></div>
-                <div class="decor_blue"></div>
-            </div>
-        </div>
-    </div>
-</h:body>
+    </ui:define>
+</ui:composition>
 </html>

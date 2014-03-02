@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:tt="http://gw-systems.com/taglib/thetree"
       xmlns:f="http://java.sun.com/jsf/core">
-<ui:composition template="/index.xhtml">
+<ui:composition template="/templates/main-layout.xhtml">
     <f:metadata>
         <f:viewParam name="torrentid" value="#{showTorrentController.torrentid}"/>
         <f:event type="preRenderView" listener="#{showTorrentController.initTorrent}"/>
