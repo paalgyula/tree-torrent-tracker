@@ -27,13 +27,17 @@ public class RegisterController {
     @Inject
     private Logger logger;
 
-    @Inject
-    @Named("newUser")
+    @Named
+    @Produces
     private User newUser;
 
-    public void register() {
+    @PostConstruct
+    public void initNewUser() {
+        this.newUser = new User();
+    }
 
-        System.out.println("Megnyomtam a gombot! " + this.newUser.getUsername());
+    public void register() {
+        logger.info("Megnyomtam a gombot! " + this.newUser.getUsername());
         this.facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Nem mondom, vagy", "Mondoooooom"));
     }
 }

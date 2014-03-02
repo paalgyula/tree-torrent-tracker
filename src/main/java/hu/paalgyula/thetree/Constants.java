@@ -5,4 +5,5 @@ package hu.paalgyula.thetree;
  */
 public class Constants {
     public final static int TORRENTS_PER_PAGE = 50;
+    public static final int FEED_ITEMS_PER_PAGE = 10;
 }

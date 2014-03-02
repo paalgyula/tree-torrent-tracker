@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en">
+<h:head>
+    <h:outputStylesheet library="css" name="main.css"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>PrimeFaces - ShowCase</title>
+</h:head>
+<h:body>
+
+    <p:growl id="growl" autoUpdate="true" showDetail="true" sticky="true"/>
+
+    <div id="main_placeholder" style="width: 800px">
+        <br/>
+        <p:panel header="Adminisztráció">
+            <h:form id="form">
+                <h2>Torrentek</h2>
+                <p:dataTable value="#{torrentList}" var="torrent" rowKey="#{torrent.id}"
+                             selection="#{adminController.selectedTorrent}" selectionMode="single">
+                    <p:column headerText="Torrent neve">
+                        <h:outputText value="#{torrent.name}"/>
+                    </p:column>
+                    <p:column headerText="Kat." width="30">
+                        <h:graphicImage library="images" name="torrentpics/#{torrent.category.image}.gif"
+                                        alt="#{torrent.category.category}"
+                                        height="16"
+                                        title="#{torrent.category.category}"/>
+                    </p:column>
+                    <p:column headerText="Feltöltő">
+                        #{torrent.uploader.name}
+                    </p:column>
+                    <p:column headerText="Feltöltve">
+                        <h:outputText value="#{torrent.uploaded}">
+                            <f:convertDateTime pattern="yyyy-MM-dd hh:mm"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
+                                         update=":form:display" oncomplete="PF('carDialog').show()"/>
+                        <p:commandButton value="Anyád"/>
+                    </f:facet>
+                </p:dataTable>
+
+                <p:dialog id="dialog" header="Car Detail" widgetVar="carDialog" resizable="false"
+                          width="600" showEffect="fade" hideEffect="fold">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4" width="550">
+
+                        <f:facet name="header">
+                            <p:graphicImage library="images"
+                                            name="torrentpics/#{adminController.selectedTorrent.category.image}.gif"/>
+                        </f:facet>
+
+                        <h:outputText value="Model:"/>
+                        <h:outputText value="#{adminController.selectedTorrent.name}"/>
+
+                        <h:outputText value="Year:"/>
+                        <h:outputText value="#{adminController.selectedTorrent.description}"/>
+
+                        <h:outputText value="Manufacturer:"/>
+                        <h:outputText value="#{adminController.selectedTorrent.uploaded}"/>
+
+                        <h:outputText value="Color:"/>
+                        <h:outputText value="#{adminController.selectedTorrent.uploader.name}"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+                <br/>
+
+                <!-- Kategóriák -->
+                <h2>Torrent kategóriák</h2>
+                <p:dataTable value="#{categoryList}" var="category"
+                             rowKey="#{category.id}"
+                             selectionMode="single">
+                    <p:column width="10" headerText="#">
+                        #{category.id}
+                    </p:column>
+                    <p:column headerText="Kategória neve">
+                        #{category.category}
+                    </p:column>
+                    <p:column headerText="Kép">
+                        #{category.image}
+                    </p:column>
+                    <p:column headerText="" width="30">
+                        <h:graphicImage library="images" name="torrentpics/#{category.image}.gif" alt="" title=""
+                                        height="15"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton value="Új kategória" icon="ui-icon-plus"
+                                         oncomplete="PF('addCategoryDialog').show()"/>
+                    </f:facet>
+                </p:dataTable>
+
+                <p:dialog header="Kategória felvétele" closable="true" modal="true" widgetVar="addCategoryDialog"
+                          showEffect="fade">
+                    <h:panelGrid id="addCategoryDisplay" columns="2" cellpadding="4">
+                        <h:outputLabel for="category-name" value="Kategória neve:"/>
+                        <p:inputText id="category-name" value="#{adminController.newCategory.category}"
+                                     placeholder="Kategória neve"/>
+                        <h:outputLabel for="category-picture" value="Kategória képe:"/>
+                        <p:inputText id="category-picture" value="#{adminController.newCategory.image}"
+                                     placeholder="Kategória képe"/>
+                        <f:facet name="footer">
+                            <p:commandButton value="Mentés" update=":form" action="#{adminController.addCategory}"
+                                             oncomplete="PF('addCategoryDialog').hide();"/>
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+        </p:panel>
+    </div>
+</h:body>
+</html>

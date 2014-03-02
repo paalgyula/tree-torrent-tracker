@@ -4,6 +4,8 @@ import hu.paalgyula.thetree.entity.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.CacheRetrieveMode;
+import javax.persistence.CacheStoreMode;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
@@ -18,6 +20,8 @@ public class UserRepository implements Serializable {
     private EntityManager entityManager;
 
     public List<User> findAll() {
-        return entityManager.createQuery("select u from User u order by u.id asc", User.class).getResultList();
+        return entityManager
+                .createNamedQuery("User.findAll", User.class)
+                .getResultList();
     }
 }

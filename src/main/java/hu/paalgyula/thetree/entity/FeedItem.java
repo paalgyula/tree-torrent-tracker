@@ -2,11 +2,13 @@ package hu.paalgyula.thetree.entity;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Date;
 
 /**
  * Created by PGYULA on 3/2/14.
  */
 @Entity
+@Cacheable
 @XmlRootElement
 public class FeedItem {
     @Id
@@ -17,6 +19,11 @@ public class FeedItem {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User author;
+
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "post_date")
+    private Date postDate = new Date();
 
     @Basic
     @Column(name = "title", nullable = false)
@@ -57,5 +64,13 @@ public class FeedItem {
 
     public void setFeedContent(String feedContent) {
         this.feedContent = feedContent;
+    }
+
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
     }
 }

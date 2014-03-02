@@ -7,7 +7,18 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <ui:composition template="/templates/main-layout.xhtml">
     <ui:define name="body">
+        <div class="large_window_top">
+            <div class="legend">Hírek, újdonságok</div>
+        </div>
+        <div class="large_window_bevel">
+            <div class="content">
+                <br/><br/>
+                <ui:repeat value="#{feedItemList}" var="feedItem">
 
+                </ui:repeat>
+                <br/><br/>
+            </div>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

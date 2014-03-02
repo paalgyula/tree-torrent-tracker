@@ -144,11 +144,16 @@
             <version>2.1.2</version>
         </dependency>
 
-        <!--dependency>
-            <groupId>org.primefaces</groupId>
+        <dependency>
+        <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>4.0</version>
-        </dependency-->
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>1.0.10</version>
+        </dependency>
 
         <!-- MyFaces -->
         <!--dependency>
@@ -188,6 +193,15 @@
     </dependencies>
 
     <!-- Repositories -->
+    <repositories>
+        <repository>
+            <id>primefaces-themes</id>
+            <url>http://repository.primefaces.org</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 
 
     <pluginRepositories>

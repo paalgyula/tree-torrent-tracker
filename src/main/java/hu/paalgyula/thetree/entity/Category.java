@@ -11,6 +11,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Cacheable
 @Table(name = "category", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"category"})
 })

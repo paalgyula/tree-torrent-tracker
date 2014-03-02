@@ -3,12 +3,7 @@ package hu.paalgyula.thetree.entity;
 import java.security.Principal;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +13,14 @@ import javax.persistence.Transient;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Cacheable
 @Table(name = "users")
+@NamedQueries({
+        @NamedQuery(name = "User.findAll", query = "select u from User u order by u.id asc", hints = {
+                @QueryHint(name = "javax.persistence.cache.storeMode", value = "REFRESH"),
+                @QueryHint(name = "javax.persistence.cache.retrieveMode", value = "USE")
+        })
+})
 public class User implements Principal {
 
     @Id

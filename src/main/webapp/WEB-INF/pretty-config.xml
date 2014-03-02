@@ -3,6 +3,13 @@
                xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
                       http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
+    <!-- Index -->
+    <url-mapping>
+        <pattern value="/"/>
+        <view-id value="/index.xhtml"/>
+    </url-mapping>
+
+    <!-- User manager - Login, Register -->
     <url-mapping id="Login">
         <pattern value="/Login"/>
         <view-id value="/users/login.xhtml"/>
@@ -16,6 +23,12 @@
     <url-mapping id="ShowTorrent">
         <pattern value="/Torrent/#{torrentid}_#{torrentname}"/>
         <view-id value="/torrents/show.xhtml"/>
+    </url-mapping>
+
+    <!-- Upload torrent URL -->
+    <url-mapping>
+        <pattern value="/Torrent/Upload"/>
+        <view-id value="/torrents/upload.xhtml"/>
     </url-mapping>
 
     <!-- /Torrents -->
