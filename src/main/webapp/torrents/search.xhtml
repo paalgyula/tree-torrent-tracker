@@ -90,7 +90,9 @@
                                 title="#{torrent.category.category}"/>
             </td>
             <td class="cell caption">
-                ${torrent.name}
+                <h:link outcome="/torrents/show?torrentid=#{torrent.id}&amp;torrentname=#{tt:slugify(torrent.name)}">
+                    ${torrent.name}
+                </h:link>
             </td>
             <td class="cell caption c">
                 <h:outputText value="#{torrent.uploaded}">
@@ -98,7 +100,7 @@
                 </h:outputText>
                 <br/>
                 <h:outputText value="#{torrent.uploaded}">
-                    <f:convertDateTime pattern="HH:ss"/>
+                    <f:convertDateTime pattern="hh:mm"/>
                 </h:outputText>
             </td>
             <td class="cell caption c">

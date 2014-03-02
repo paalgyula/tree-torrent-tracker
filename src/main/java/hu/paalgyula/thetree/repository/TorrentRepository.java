@@ -71,4 +71,8 @@ public class TorrentRepository {
         }
 
     }
+
+    public Torrent findById(long id) {
+        return entityManager.find(Torrent.class, id);
+    }
 }

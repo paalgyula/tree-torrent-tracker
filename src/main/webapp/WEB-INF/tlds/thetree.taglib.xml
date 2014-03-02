@@ -9,4 +9,10 @@
         <function-class>hu.paalgyula.thetree.tags.ByteConveter</function-class>
         <function-signature>java.lang.String formatBytes(java.lang.Long)</function-signature>
     </function>
+
+    <function>
+        <function-name>slugify</function-name>
+        <function-class>com.github.slugify.Functions</function-class>
+        <function-signature>java.lang.String slugify(java.lang.String)</function-signature>
+    </function>
 </facelet-taglib>

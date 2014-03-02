@@ -12,8 +12,8 @@
     <meta name="copyright" content="2013, GW-Systems Kft."/>
     <meta name="description" content="TheTree Torrent Tracker"/>
     <title>TheTree™ <ui:insert name="title"> - Főoldal</ui:insert></title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="#{resource['/images/favicon.png']}" type="image/png"/>
+    <link rel="shortcut icon" href="#{resource['/images/favicon.png']}" type="image/png"/>
     <h:outputStylesheet library="css" name="main.css"/>
     <link rel="stylesheet" media="screen" href="css/main.css"/>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -29,15 +29,15 @@
                 <div class="menu">
                     <div class="left"></div>
                     <div class="bg">
-                        <h:panelGroup rendered="true">
-                            <h:link outcome="/users/login" styleClass="nyilas_hivatkozas" value="Belépés"/>
+                        <h:panelGroup rendered="#{empty trackerUser}">
+                        <h:link outcome="/users/login" styleClass="nyilas_hivatkozas" value="Belépés"/>
                             <h:link outcome="/users/register" styleClass="nyilas_hivatkozas" value="Regisztráció"/>
                         </h:panelGroup>
-                        <h:panelGroup rendered="true">
-                            <a href="/index.tt" class="nyilas_hivatkozas">Főoldal</a>
+                        <h:panelGroup rendered="#{not empty trackerUser}">
+                            <h:link outcome="/index" styleClass="nyilas_hivatkozas">Főoldal</h:link>
                             <h:link outcome="/torrents/search" styleClass="nyilas_hivatkozas">Letöltés</h:link>
-                            <h:link outcome="upload" styleClass="nyilas_hivatkozas">Feltöltés</h:link>
-                            <h:link outcome="/requests" styleClass="nyilas_hivatkozas">Kérések</h:link>
+                            <h:link outcome="/torrents/upload" styleClass="nyilas_hivatkozas">Feltöltés</h:link>
+                            <h:link outcome="/torrents/requests" styleClass="nyilas_hivatkozas">Kérések</h:link>
                             <h:link outcome="/top10" styleClass="nyilas_hivatkozas">Top10</h:link>
                             <h:link outcome="/forum/index" styleClass="nyilas_hivatkozas">Fórum</h:link>
                             <h:link outcome="/wiki/index" styleClass="nyilas_hivatkozas">Wiki</h:link>
@@ -53,11 +53,13 @@
                 <h:panelGroup rendered="true">
                     <div id="usercontrol">
                         <div class="left">
-                            #{trackerUser.username}
-                            <a href="${userLink}">${user.username}</a>
-                            (${user.title}) Pontok: <a
-                                href="#">${user.points}</a>, Arany: 0.00 Fel: # {tt:asdasd(trackerUser.uploaded)} Le: # {tt:formatBytes(trackerUser.downloaded)} [<a
-                                href="#">Tamogatas</a>]
+                            <a href="${userLink}">#{trackerUser.username}</a>
+                            (#{trackerUser.title})
+                            Pontok: <a href="#">#{trackerUser.points}</a>,
+                            Arány: 0.00
+                            Fel: #{tt:formatBytes(trackerUser.uploaded)}
+                            Le: #{tt:formatBytes(trackerUser.downloaded)}
+                            [<a href="#">Támogatás</a>]
                         </div>
                     </div>
                 </h:panelGroup>

@@ -12,4 +12,24 @@
         <view-id value="/users/register.xhtml"/>
     </url-mapping>
 
+    <!-- Show torrent URL -->
+    <url-mapping id="ShowTorrent">
+        <pattern value="/Torrent/#{torrentid}_#{torrentname}"/>
+        <view-id value="/torrents/show.xhtml"/>
+    </url-mapping>
+
+    <!-- /Torrents -->
+    <url-mapping id="TorrentList">
+        <pattern value="/Torrents"/>
+        <view-id value="/torrents/search.xhtml"/>
+    </url-mapping>
+    <url-mapping id="TorrentListByPage">
+        <pattern value="/Torrents/#{page}"/>
+        <view-id value="/torrents/search.xhtml"/>
+    </url-mapping>
+    <url-mapping id="TorrentSearch">
+        <pattern value="/Torrents/#{search}/#{page}"/>
+        <view-id value="/torrents/search.xhtml"/>
+    </url-mapping>
+
 </pretty-config>
