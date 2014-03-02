@@ -27,10 +27,17 @@
                         <div class="row">
                             <div class="label">Kategória:</div>
                             <div class="field">
-                                <h:selectOneMenu value="#{newTorrent.category}" converter="#{categoryConverter}">
+                                <p:selectOneMenu value="#{newTorrent.category}" var="cat"
+                                                 converter="#{categoryConverter}"
+                                                 effect="fade" style="width: 300px">
                                     <f:selectItems value="#{categoryList}" var="cat" itemValue="#{cat}"
                                                    itemLabel="#{cat.category}"/>
-                                </h:selectOneMenu>
+                                    <p:column width="30" style="vertical-align: top;">
+                                        <p:graphicImage height="16" library="images"
+                                                        name="/torrentpics/#{cat.image}.gif"/>
+                                        <strong>#{cat.category}</strong>
+                                    </p:column>
+                                </p:selectOneMenu>
                             </div>
                         </div>
                         <div class="row">
