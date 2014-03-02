@@ -1,5 +1,7 @@
 /target
+**/*.class
 *.iml
-*.ipr
-*.class
 *.iws
+*.ipr
+*.iws
+*.ids
