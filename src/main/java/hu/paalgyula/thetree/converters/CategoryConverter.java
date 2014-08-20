@@ -2,7 +2,6 @@ package hu.paalgyula.thetree.converters;
 
 import hu.paalgyula.thetree.entity.Category;
 import hu.paalgyula.thetree.repository.CategoryRepository;
-import org.jboss.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
@@ -10,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.logging.Logger;
 
 /**
  * Created by PGYULA on 3/2/14.

@@ -2,7 +2,6 @@ package hu.paalgyula.thetree.controller;
 
 import hu.paalgyula.thetree.entity.User;
 import hu.paalgyula.thetree.repository.UserRepository;
-import org.jboss.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -11,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.logging.Logger;
 
 /**
  * Created by PGYULA on 2/27/14.

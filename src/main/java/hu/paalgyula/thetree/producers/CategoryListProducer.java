@@ -2,7 +2,6 @@ package hu.paalgyula.thetree.producers;
 
 import hu.paalgyula.thetree.entity.Category;
 import hu.paalgyula.thetree.repository.CategoryRepository;
-import org.jboss.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -11,6 +10,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by PGYULA on 3/1/14.

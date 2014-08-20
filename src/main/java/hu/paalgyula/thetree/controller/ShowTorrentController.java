@@ -2,11 +2,11 @@ package hu.paalgyula.thetree.controller;
 
 import hu.paalgyula.thetree.entity.Torrent;
 import hu.paalgyula.thetree.repository.TorrentRepository;
-import org.jboss.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import java.util.logging.Logger;
 
 /**
  * Created by PGYULA on 3/2/14.

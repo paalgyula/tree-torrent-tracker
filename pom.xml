@@ -3,6 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <name>tree-web</name>
+
+    <parent>
+        <groupId>com.gwsystems</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0</version>
+    </parent>
+
     <groupId>hu.paalgyula.thetree</groupId>
     <artifactId>tree-web</artifactId>
     <packaging>war</packaging>
@@ -55,86 +62,23 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-6.0</artifactId>
+            <version>3.0.2.Final-redhat-7</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.transaction</groupId>
-            <artifactId>jboss-transaction-api_1.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.ws.rs</groupId>
-            <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-            <scope>provided</scope>
+            <type>pom</type>
         </dependency>
 
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.2.0.Final</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.2.0.Final</version>
-            <classifier>sources</classifier>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
             <version>1.9.12</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency-->
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>1.1.1.Final</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.1.6.Final</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.faces</groupId>
-            <artifactId>jboss-jsf-api_2.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -167,11 +111,11 @@
             <version>2.2.0</version>
         </dependency-->
 
-        <dependency>
+        <!--dependency>
             <groupId>org.apache.myfaces.tomahawk</groupId>
             <artifactId>tomahawk20</artifactId>
             <version>1.1.14</version>
-        </dependency>
+        </dependency-->
 
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -200,6 +144,16 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
+        </repository>
+        <repository>
+            <id>jboss-central</id>
+            <url>https://repository.jboss.org</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
