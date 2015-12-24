@@ -2,7 +2,7 @@ package hu.paalgyula.thetree.producers;
 
 import hu.paalgyula.thetree.entity.User;
 import hu.paalgyula.thetree.repository.UserRepository;
-import org.jboss.logging.Logger;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;

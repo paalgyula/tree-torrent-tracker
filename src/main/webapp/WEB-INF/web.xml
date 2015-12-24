@@ -21,12 +21,15 @@
 
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>bootstrap</param-value>
+        <param-value>none</param-value>
     </context-param>
 
     <servlet>
         <servlet-name>FacesServlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name/>
     </servlet>
 
     <servlet-mapping>
@@ -68,7 +71,7 @@
             <url-pattern>/javax.faces.resource/*</url-pattern>
         </web-resource-collection>
     </security-constraint>
-    <!--<security-constraint>
+    <!--security-constraint>
         <display-name>User Login</display-name>
         <web-resource-collection>
             <web-resource-name>Protected Area</web-resource-name>
@@ -78,7 +81,7 @@
             <role-name>USERS</role-name>
             <role-name>ADMINS</role-name>
         </auth-constraint>
-    </security-constraint>-->
+    </security-constraint-->
 
     <security-role>
         <role-name>USERS</role-name>

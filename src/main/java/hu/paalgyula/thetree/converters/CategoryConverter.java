@@ -20,9 +20,6 @@ public class CategoryConverter implements Converter {
     @Inject
     private CategoryRepository categoryRepository;
 
-    @Inject
-    private Logger logger;
-
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
         return categoryRepository.findById(Long.parseLong(s, 10));

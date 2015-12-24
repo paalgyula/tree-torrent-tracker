@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 <ui:composition template="../templates/main-layout.xhtml">
     <ui:define name="body">
         <div class="large_window_top">
@@ -9,7 +11,9 @@
         <div class="large_window_bevel">
             <div class="content">
                 <br/><br/>
-                <h:form id="registerForm">
+                <h:form id="registerForm" >
+                    <p:messages globalOnly="false"/>
+
                     <div id="loginBox">
                         <div class="row">
                             <div class="label"></div>
@@ -22,7 +26,8 @@
                                 <h:outputLabel for="username" value="Felhasználónév:"/>
                             </div>
                             <div class="field">
-                                <h:inputText value="#{newUser.username}" id="username"/>
+                                <h:inputText value="#{newUser.username}" id="username" binding="#{usernameField}"/>
+                                <h:message for="#{newUser.username}" showDetail="true"/>
                             </div>
                         </div>
                         <div class="row">
@@ -30,7 +35,7 @@
                                 <h:outputLabel for="password" value="Jelszó:"/>
                             </div>
                             <div class="field">
-                                <h:inputSecret value="#{newUser.password}" id="password"/>
+                                <p:password value="#{newUser.password}" id="password" match="password2"/>
                             </div>
                         </div>
                         <div class="row">
@@ -38,7 +43,7 @@
                                 <h:outputLabel for="password2" value="Jelszó megismételve:"/>
                             </div>
                             <div class="field">
-                                <h:inputSecret value="#{newUser.password2}" id="password2"/>
+                                <p:password value="#{newUser.password}" id="password2"/>
                             </div>
                         </div>
                         <div class="row">
@@ -46,7 +51,7 @@
                                 <h:outputLabel for="email" value="E-Mail cím:"/>
                             </div>
                             <div class="field">
-                                <h:inputSecret value="#{newUser.email}" id="email"/>
+                                <h:inputText value="#{newUser.email}" id="email"/>
                             </div>
                         </div>
                         <div class="row">

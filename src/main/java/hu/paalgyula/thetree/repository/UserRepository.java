@@ -1,7 +1,11 @@
 package hu.paalgyula.thetree.repository;
 
 import hu.paalgyula.thetree.entity.User;
+import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.ejb.Local;
+import javax.ejb.Remote;
+import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.CacheRetrieveMode;
@@ -14,14 +18,10 @@ import java.util.List;
 /**
  * Created by PGYULA on 2/27/14.
  */
-@ApplicationScoped
-public class UserRepository implements Serializable {
-    @Inject
-    private EntityManager entityManager;
+@Local
+public interface UserRepository extends Serializable {
 
-    public List<User> findAll() {
-        return entityManager
-                .createNamedQuery("User.findAll", User.class)
-                .getResultList();
-    }
+    List<User> findAll();
+
+    void persistWithEncoding(User user);
 }
