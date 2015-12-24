@@ -3,6 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <name>tree-web</name>
+
+    <parent>
+        <groupId>com.gwsystems</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0</version>
+    </parent>
+
     <groupId>hu.paalgyula.thetree</groupId>
     <artifactId>tree-web</artifactId>
     <packaging>war</packaging>
@@ -65,21 +72,40 @@
             <groupId>org.jboss.spec</groupId>
             <artifactId>jboss-javaee-6.0</artifactId>
             <version>3.0.2.Final-redhat-7</version>
+<<<<<<< HEAD
             <scope>import</scope>
             <type>pom</type>
         </dependency>
 
         <dependency>
+=======
+            <scope>provided</scope>
+            <type>pom</type>
+        </dependency>
+
+        <!--dependency>
+>>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
             <version>1.9.12</version>
             <scope>provided</scope>
+<<<<<<< HEAD
         </dependency>
         <!--dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
             <scope>provided</scope>
         </dependency-->
+=======
+        </dependency-->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+>>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
         <dependency>
             <groupId>com.github.slugify</groupId>
             <artifactId>slugify-integration-jstl</artifactId>
@@ -109,11 +135,11 @@
             <version>2.2.0</version>
         </dependency-->
 
-        <dependency>
+        <!--dependency>
             <groupId>org.apache.myfaces.tomahawk</groupId>
             <artifactId>tomahawk20</artifactId>
             <version>1.1.14</version>
-        </dependency>
+        </dependency-->
 
         <!-- for JSF 2.x -->
         <dependency>
@@ -128,6 +154,46 @@
         </dependency>
     </dependencies>
 
+<<<<<<< HEAD
+=======
+    <!-- Repositories -->
+    <repositories>
+        <repository>
+            <id>primefaces-themes</id>
+            <url>http://repository.primefaces.org</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>jboss-central</id>
+            <url>https://repository.jboss.org</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+>>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
     <!-- DistributionManagement -->
     <profiles>
         <profile>

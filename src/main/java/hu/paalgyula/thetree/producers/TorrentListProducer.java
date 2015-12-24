@@ -2,11 +2,9 @@ package hu.paalgyula.thetree.producers;
 
 import hu.paalgyula.thetree.entity.Torrent;
 import hu.paalgyula.thetree.repository.TorrentRepository;
-import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
