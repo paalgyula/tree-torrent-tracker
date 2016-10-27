@@ -37,7 +37,9 @@ public class TorrentUploadController {
 
     public String upload() {
         logger.info("Persisting new torrent: " + newTorrent.getName());
-        this.newTorrent.setUploader(this.trackerUser);
+
+        logger.info("uploaded file name: " + newTorrent.getFile().getName());
+        //this.newTorrent.setUploader(this.trackerUser);
         this.torrentRepository.save(this.newTorrent);
 
         return "/torrents/show?faces-redirect=true&torrentid=" + this.newTorrent.getId();

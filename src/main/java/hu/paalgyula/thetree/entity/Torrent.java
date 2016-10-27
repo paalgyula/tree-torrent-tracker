@@ -1,6 +1,7 @@
 package hu.paalgyula.thetree.entity;
 
 import javax.persistence.*;
+import javax.servlet.http.Part;
 import java.util.Date;
 
 /**
@@ -52,6 +53,9 @@ public class Torrent {
     @JoinColumn(name = "uploader")
     @ManyToOne(cascade = CascadeType.REMOVE)
     private User uploader;
+
+    @Transient
+    private Part file;
 
     public Long getId() {
         return id;
@@ -147,5 +151,13 @@ public class Torrent {
 
     public void setUploader(User uploader) {
         this.uploader = uploader;
+    }
+
+    public Part getFile() {
+        return file;
+    }
+
+    public void setFile(Part file) {
+        this.file = file;
     }
 }

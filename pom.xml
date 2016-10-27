@@ -131,7 +131,7 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>LATEST</version>
+            <version>1.10.0.redhat-5</version>
         </dependency>
 
         <dependency>
@@ -155,7 +155,7 @@
 
 
         <!-- for JSF 2.x -->
-        <dependency>
+        <!--dependency>
             <groupId>org.ocpsoft.rewrite</groupId>
             <artifactId>rewrite-servlet</artifactId>
             <version>2.0.11.Final</version>
@@ -164,7 +164,7 @@
             <groupId>org.ocpsoft.rewrite</groupId>
             <artifactId>rewrite-config-prettyfaces</artifactId>
             <version>2.0.11.Final</version>
-        </dependency>
+        </dependency-->
     </dependencies>
 
     <pluginRepositories>

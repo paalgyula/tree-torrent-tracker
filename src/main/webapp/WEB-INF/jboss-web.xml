@@ -1,4 +1,4 @@
 <jboss-web>
-    <context-root>/</context-root>
-    <security-domain>java:/jaas/thetree</security-domain>
+    <context-root>/tree</context-root>
+    <!--security-domain>java:/jaas/thetree</security-domain-->
 </jboss-web>

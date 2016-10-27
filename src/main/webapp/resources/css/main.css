@@ -213,8 +213,8 @@ select {
 }
 
 .large_window_bevel {
-	margin: 0 auto;
-	margin-top: 1px;
+	margin: 1px auto 0;
+	padding-bottom: 5px;
 	border: #818181 1px solid;
 	width: 899px;
 	background-color: #616161;
@@ -225,9 +225,7 @@ select {
 }
 
 .nyilas_hivatkozas {
-    background-image: url(#{resource[ '/images/menu-decor-normal.png' ]});
-    background-repeat: no-repeat;
-	background-position: left center;
+	background: url(#{resource[ '/images/menu-decor-normal.png' ]}) no-repeat left center;
 	padding-left: 27px;
 	padding-right: 13px;
 }
@@ -240,8 +238,7 @@ select {
 	display: table;
 	width: 903px;
     border-spacing: 1px;
-	margin: 0 auto;
-	margin-top: 1px;
+	margin: 1px auto 0;
 }
 
 .table .row {
