@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="../templates/main-layout.xhtml">
     <ui:define name="body">
         <div class="large_window_top">
@@ -11,8 +10,7 @@
         <div class="large_window_bevel">
             <div class="content">
                 <br/><br/>
-                <h:form id="registerForm" >
-                    <p:messages globalOnly="false"/>
+                <h:form id="registerForm">
 
                     <div id="loginBox">
                         <div class="row">
@@ -35,7 +33,7 @@
                                 <h:outputLabel for="password" value="Jelszó:"/>
                             </div>
                             <div class="field">
-                                <p:password value="#{newUser.password}" id="password" match="password2"/>
+                                <h:inputSecret value="#{newUser.password}" id="password" match="password2"/>
                             </div>
                         </div>
                         <div class="row">
@@ -43,7 +41,7 @@
                                 <h:outputLabel for="password2" value="Jelszó megismételve:"/>
                             </div>
                             <div class="field">
-                                <p:password value="#{newUser.password}" id="password2"/>
+                                <h:inputSecret value="#{newUser.password}" id="password2"/>
                             </div>
                         </div>
                         <div class="row">
@@ -76,9 +74,9 @@
                         <div class="row">
                             <div class="label"></div>
                             <div class="field">
-                        <span class="errorstring">
-                            <h:messages for="email" fatalClass="errorstring" globalOnly="false"/>
-                        </span>
+                                <span class="errorstring">
+                                    <h:messages for="email"/>
+                                </span>
                             </div>
                         </div>
                         <div class="row">

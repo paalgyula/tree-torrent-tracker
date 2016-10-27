@@ -1,7 +1,10 @@
 package hu.paalgyula.thetree.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import javax.servlet.http.Part;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -19,6 +22,7 @@ public class Torrent {
     private Long id;
 
     @Column
+    @NotBlank
     private String name;
 
     @JoinColumn(name = "category_id")
@@ -50,6 +54,7 @@ public class Torrent {
     @Column(name = "description")
     private String description;
 
+    @NotNull
     @JoinColumn(name = "uploader")
     @ManyToOne(cascade = CascadeType.REMOVE)
     private User uploader;

@@ -2,7 +2,6 @@ package hu.paalgyula.thetree.producers;
 
 import hu.paalgyula.thetree.entity.User;
 import hu.paalgyula.thetree.repository.UserRepository;
-import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -18,6 +17,8 @@ import java.util.logging.Logger;
  */
 @SessionScoped
 public class TrackerUserProducer implements Serializable {
+    private static final Logger LOGGER = Logger.getLogger(TrackerUserProducer.class.getName());
+
     @Named
     @Produces
     private User trackerUser;
@@ -25,19 +26,25 @@ public class TrackerUserProducer implements Serializable {
     @Inject
     private UserRepository userRepository;
 
-    @Inject
-    private FacesContext facesContext;
-
-    @Inject
-    private Logger logger;
+    private FacesContext facesContext = FacesContext.getCurrentInstance();
 
     @PostConstruct
     private void setupUser() {
         this.trackerUser = (User) facesContext.getExternalContext().getUserPrincipal();
         if (this.trackerUser == null) {
-            this.logger.info("Loading Fake user instance");
-            //this.trackerUser = userRepository.findAll().get(0);
-            this.trackerUser = new User();
+            LOGGER.info("Loading Fake user instance");
+            User user = new User();
+            user.setUsername("goofyx");
+            user.setPoints(0);
+            user.setTitle("Újponc");
+            user.setEmail("paalgyula@paalgyula.com");
+            user.setPassword("Aa123456");
+            user.setDownloaded(152124112);
+            user.setUploaded(1511251223);
+
+            userRepository.persistWithEncoding(user);
+
+            this.trackerUser = user;
         }
     }
 }

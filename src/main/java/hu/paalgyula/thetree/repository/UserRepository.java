@@ -18,7 +18,6 @@ import java.util.List;
 /**
  * Created by PGYULA on 2/27/14.
  */
-@Local
 public interface UserRepository extends Serializable {
 
     List<User> findAll();

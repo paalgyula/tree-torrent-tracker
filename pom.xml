@@ -165,6 +165,12 @@
             <artifactId>rewrite-config-prettyfaces</artifactId>
             <version>3.4.1.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.turn</groupId>
+            <artifactId>ttorrent-core</artifactId>
+            <version>1.5</version>
+        </dependency>
     </dependencies>
 
     <pluginRepositories>

@@ -14,7 +14,7 @@
         <div class="large_window_bevel">
             <div class="content">
                 <br/><br/>
-                <h:form id="uploadForm" enctype="multipart/form-data">
+                <h:form id="uploadForm" prependId="false" enctype="multipart/form-data">
                     <div id="loginBox">
                         <div class="row">
                             <div class="label"></div>
@@ -46,9 +46,13 @@
                         <div class="row">
                             <div class="label">Torrent file:</div>
                             <div class="field">
-                                <h:inputFile value="#{newTorrent.file}"/>
+                                <h:inputFile id="torrentFile" value="#{newTorrent.file}"/>
+                                <p class="errorstring">
+                                    <h:message for="torrentFile"/>
+                                </p>
                             </div>
                         </div>
+
                         <h:panelGroup rendered="false">
                             <div class="row">
                                 <div class="label">
