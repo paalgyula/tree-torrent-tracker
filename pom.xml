@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <name>tree-web</name>
 
+
     <parent>
         <groupId>com.gwsystems</groupId>
         <artifactId>parent</artifactId>
@@ -15,28 +16,7 @@
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <parent>
-        <groupId>com.gwsystems</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0</version>
-    </parent>
-
-    <repositories>
-        <repository>
-            <id>jboss-eap-6.2</id>
-            <name>JBoss EAP 6.2.0</name>
-            <url>http://localhost:8081/nexus/content/repositories/jboss-eap-6.2/</url>
-        </repository>
-        <repository>
-            <id>primefaces-themes</id>
-            <url>http://repository.primefaces.org</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-    </repositories>
-
-    <url>http://tree.gw-systems.com</url>
+    <url>http://tree.paalgyula.com</url>
 
     <licenses>
         <license>
@@ -51,7 +31,7 @@
     <developers>
         <developer>
             <name>Paál Gyula</name>
-            <email>info@gw-systems.com</email>
+            <email>info@paalgyula.com</email>
         </developer>
     </developers>
 
@@ -63,41 +43,84 @@
     <properties>
         <resteasy.version>2.3.5.Final</resteasy.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+
+        <!-- Explicitly declaring the source encoding eliminates the following message: -->
+        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent! -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- JBoss dependency versions -->
+        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+
+        <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
+        <version.jboss.bom>8.2.1.Final</version.jboss.bom>
+        <version.wildfly>9.0.0.Alpha1</version.wildfly>
+
+
+        <!-- other plugin versions -->
+        <version.compiler.plugin>3.1</version.compiler.plugin>
+        <version.ear.plugin>2.10</version.ear.plugin>
+        <version.ejb.plugin>2.3</version.ejb.plugin>
+        <version.surefire.plugin>2.16</version.surefire.plugin>
+        <version.war.plugin>2.5</version.war.plugin>
+
+        <!-- maven-compiler-plugin -->
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+
+        <version.jsfunit>2.0.0.Beta2</version.jsfunit>
+        <version.shrinkwrap>1.0.0-beta-5</version.shrinkwrap>
+        <version.shrinkwrap.descriptors>1.1.0-alpha-2</version.shrinkwrap.descriptors>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>jboss-javaee-7.0-with-tools</artifactId>
+                <version>${version.jboss.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>jboss-javaee-7.0-with-hibernate</artifactId>
+                <version>${version.jboss.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
-            <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-6.0</artifactId>
-            <version>3.0.2.Final-redhat-7</version>
-<<<<<<< HEAD
-            <scope>import</scope>
-            <type>pom</type>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
         </dependency>
 
+        <!-- Import the CDI API, we use provided scope as the API is included in JBoss WildFly -->
         <dependency>
-=======
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
             <scope>provided</scope>
-            <type>pom</type>
         </dependency>
 
-        <!--dependency>
->>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-            <version>1.9.12</version>
+        <!-- Import the JPA API, we use provided scope as the API is included in JBoss WildFly -->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
             <scope>provided</scope>
-<<<<<<< HEAD
         </dependency>
-        <!--dependency>
+
+        <!-- JSR-303 (Bean Validation) Implementation -->
+        <!-- Provides portable constraints such as @Email -->
+        <!-- Hibernate Validator is shipped in JBoss WildFly -->
+        <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-jpamodelgen</artifactId>
+            <artifactId>hibernate-validator</artifactId>
             <scope>provided</scope>
-        </dependency-->
-=======
-        </dependency-->
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -105,41 +128,31 @@
             <scope>provided</scope>
         </dependency>
 
->>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.spec.javax.faces</groupId>
+            <artifactId>jboss-jsf-api_2.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
         <dependency>
             <groupId>com.github.slugify</groupId>
             <artifactId>slugify-integration-jstl</artifactId>
             <version>2.1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.primefaces.themes</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>1.0.10</version>
-        </dependency>
-
-        <!-- MyFaces -->
-        <!--dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-api</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-impl</artifactId>
-            <version>2.2.0</version>
-        </dependency-->
-
-        <!--dependency>
-            <groupId>org.apache.myfaces.tomahawk</groupId>
-            <artifactId>tomahawk20</artifactId>
-            <version>1.1.14</version>
-        </dependency-->
 
         <!-- for JSF 2.x -->
         <dependency>
@@ -153,30 +166,6 @@
             <version>2.0.11.Final</version>
         </dependency>
     </dependencies>
-
-<<<<<<< HEAD
-=======
-    <!-- Repositories -->
-    <repositories>
-        <repository>
-            <id>primefaces-themes</id>
-            <url>http://repository.primefaces.org</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>jboss-central</id>
-            <url>https://repository.jboss.org</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
 
     <pluginRepositories>
         <pluginRepository>
@@ -193,7 +182,6 @@
         </pluginRepository>
     </pluginRepositories>
 
->>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
     <!-- DistributionManagement -->
     <profiles>
         <profile>
@@ -219,13 +207,4 @@
             </build>
         </profile>
     </profiles>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>groovy-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

@@ -29,10 +29,6 @@ public class Resources {
 
     @Produces
     private Logger produceLogger(InjectionPoint injectionPoint) {
-<<<<<<< HEAD
         return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
-=======
-        return Logger.getLogger(injectionPoint.getBean().getBeanClass().getName());
->>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
     }
 }

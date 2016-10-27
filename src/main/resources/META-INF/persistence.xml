@@ -5,11 +5,7 @@
         http://java.sun.com/xml/ns/persistence
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="thetree" transaction-type="JTA">
-<<<<<<< HEAD
         <jta-data-source>java:jboss/datasources/treeDS</jta-data-source>
-=======
-        <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
->>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="hibernate.cache.use_second_level_cache" value="true"/>

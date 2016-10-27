@@ -1,12 +1,8 @@
 package hu.paalgyula.thetree.controller;
 
+import hu.paalgyula.thetree.DigestUtils;
 import hu.paalgyula.thetree.entity.User;
 import hu.paalgyula.thetree.repository.UserRepository;
-<<<<<<< HEAD
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.DigestUtils;
-=======
->>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;

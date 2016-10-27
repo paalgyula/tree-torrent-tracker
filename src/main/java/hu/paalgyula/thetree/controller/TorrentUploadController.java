@@ -3,10 +3,6 @@ package hu.paalgyula.thetree.controller;
 import hu.paalgyula.thetree.entity.Torrent;
 import hu.paalgyula.thetree.entity.User;
 import hu.paalgyula.thetree.repository.TorrentRepository;
-<<<<<<< HEAD
-import org.apache.myfaces.custom.fileupload.UploadedFile;
-=======
->>>>>>> 1c74c1873210f3fda2ff7988a661e2d3183cb1d9
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
