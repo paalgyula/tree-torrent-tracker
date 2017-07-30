@@ -1,12 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:tt="http://gw-systems.com/taglib/thetree"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
-      lang="en">
-<h:head>
+<html xmlns:th="https://www.thymeleaf.com" lang="en">
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="robots" content="none noindex nofollow"/>
     <meta name="author" content="Paál Gyula [http://www.paalgyula.com]"/>
@@ -15,11 +9,10 @@
     <title>TheTree™ <ui:insert name="title"> - Főoldal</ui:insert></title>
     <link rel="icon" href="#{resource['/images/favicon.png']}" type="image/png"/>
     <link rel="shortcut icon" href="#{resource['/images/favicon.png']}" type="image/png"/>
-    <h:outputStylesheet library="css" name="main.css"/>
     <link rel="stylesheet" media="screen" href="css/main.css"/>
     <!--script type="text/javascript" src="../js/jquery.min.js"></script-->
-</h:head>
-<h:body>
+</head>
+<body>
     <div id="main_background">
         <div id="main_placeholder">
             <div id="content">
@@ -88,5 +81,5 @@
             </div>
         </div>
     </div>
-</h:body>
+</body>
 </html>

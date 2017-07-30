@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="none noindex nofollow"/>
+    <meta name="author" content="Paál Gyula [http://www.paalgyula.hu]"/>
+    <meta name="copyright" content="2013, GW-Systems Kft."/>
+    <meta name="description" content="TheTree Torrent Tracker"/>
+    <title>TheTree™ - Torrent Lista</title>
+
+
+    <link rel="icon" href="/tree/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/tree/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" media="screen" href="/tree/css/main.css"/>
+    <script type="text/javascript" src="/tree/js/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="main_background">
+    <div id="main_placeholder">
+        <div id="content">
+            <div class="decor_blue"></div>
+            <div class="decor_separator"></div>
+            <div id="header"></div>
+            <div class="decor_separator"></div>
+            <div class="menu">
+                <div class="left"></div>
+                <div class="bg">
+
+
+                    <a href="/tree/index.tt" class="nyilas_hivatkozas">Főoldal</a>
+                    <a href="/tree/letoltes.tt" class="nyilas_hivatkozas">Letöltés</a>
+                    <g:link controller="torrents" action="upload" class="nyilas_hivatkozas">Feltöltés</g:link>
+                    <g:link controller="index" class="nyilas_hivatkozas">Kérések</g:link>
+                    <g:link controller="index" class="nyilas_hivatkozas">Top10</g:link>
+                    <g:link controller="index" class="nyilas_hivatkozas">Fórum</g:link>
+                    <g:link controller="index" class="nyilas_hivatkozas">Wiki</g:link>
+                    <g:link controller="users" action="list" class="nyilas_hivatkozas">Felhasználók</g:link>
+                    <g:link controller="bug" action="index" class="nyilas_hivatkozas purple">Bugreport</g:link>
+                    <a href="/tree/Logout" class="nyilas_hivatkozas">Kilépés</a>
+
+                </div>
+                <div class="right"></div>
+            </div>
+            <div class="decor_separator"></div>
+
+            <div id="usercontrol">
+                <div class="left">
+                    <tree:printUserStats/>
+                </div>
+            </div>
+
+            <div class="decor_blue"></div>
+            <div id="topBg">
+                <br/><br/>
+                <br/><br/>
+
+                <div class="large_window_top">
+                    <div class="legend">Kereső</div>
+                </div>
+                <div class="large_window_bevel">
+                    <div class="content">
+
+                        <div class="pager">
+                            <g:paginate total="$ {torrents.size()}"/>
+                        </div>
+
+                    </div>
+                </div>
+                <br/><br/>
+
+                <div class="large_window_top">
+                    <div class="legend">
+                        Torrentek
+                    </div>
+                </div>
+
+                <table class="table">
+                    <tr class="row">
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 35px;">
+                                Típus
+                            </div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 412px">Név</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 80px;">Feltöltve</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 80px;">Méret</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 20px;">D</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 20px;">S</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 20px;">L</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 81px;">Feltöltő</div>
+                            <div class="caption-right"></div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr class="row odd">
+                        <td class="cell caption">
+                            <img src="images/torrentpics/xxx.gif" style="margin-bottom: -2px;"/>
+                        </td>
+                        <td class="cell caption">
+
+                        </td>
+                        <td class="cell caption">
+
+                        </td>
+                        <td class="cell caption">
+
+                        </td>
+                        <td class="cell caption">
+
+                        </td>
+                        <td class="cell caption">
+
+                        </td>
+                        <td class="cell caption">
+
+                        </td>
+                        <td class="cell caption">
+
+                        </td>
+                    </tr>
+                </table>
+
+                <g:each in="" var="torrent" status="counter">
+                    <div class="table">
+
+
+                    </div>
+                    <div class="torrent_details_content" id="detail_">
+                        <div class="content" id="detail__content">
+                            <b>Torrent leirása:</b><br/><br/>
+                            <g:if test="">
+
+                            </g:if>
+                            <g:else>
+                                ..:: Nincs leirás ::..
+                            </g:else>
+                        </div>
+                    </div>
+                </g:each>
+
+                <br/><br/>
+
+                <div class="large_window_top">
+                    <div class="legend">Lapozó</div>
+                </div>
+                <div class="large_window_bevel">
+                    <div class="content" style="text-align: center; font-weight: bold;">
+                        <div class="pager">
+                            <g:paginate total="$ {torrents.size()}"/>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+            </div>
+            <div id="bg_placeholder"></div>
+        </div>
+        <div id="footer">
+            <div class="decor_separator"></div>
+            <div class="menu">
+                <div class="left"></div>
+                <div class="bg">
+                    <small>TheTree&trade; Torrent tracker r<i>152</i> | Hosted &amp; Powered: GW-Systems</small>
+                </div>
+                <div class="right"></div>
+            </div>
+            <div class="decor_separator"></div>
+            <div class="decor_blue"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
