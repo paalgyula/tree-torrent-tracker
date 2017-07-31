@@ -5,7 +5,7 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-    background: #666666 url(/images/bodybg.png) repeat center;
+    background: #666666 url(../images/bodybg.png) repeat center;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     font-size: 10px;
 	color: #ffffff;
@@ -24,7 +24,7 @@ a:hover {
 
 input[type=text] {
 	background-color: #474747;
-    background-image: url(/images/textfield-bg.png);
+    background-image: url(../images/textfield-bg.png);
     background-position: top;
 	background-repeat: repeat-x;
 	border: #818181 1px solid;
@@ -39,7 +39,7 @@ input[type=text] {
 
 input[type=password] {
 	background-color: #474747;
-    background-image: url(/images/textfield-bg.png);
+    background-image: url(../images/textfield-bg.png);
     background-position: top;
 	background-repeat: repeat-x;
 	border: #818181 1px solid;
@@ -54,7 +54,7 @@ input[type=password] {
 
 textarea {
 	background-color: #474747;
-    background-image: url(/images/textfield-bg.png);
+    background-image: url(../images/textfield-bg.png);
     background-position: top;
 	background-repeat: repeat-x;
 	border: #818181 1px solid;
@@ -90,7 +90,7 @@ select {
 	width: 998px;
 	height: 100%;
 	margin: 0 auto;
-    background-image: url(/images/main_bg.png);
+    background-image: url(../images/main_bg.png);
     background-repeat: repeat-y;
 }
 
@@ -104,7 +104,7 @@ select {
 	display: table-row;
 	height: 100%;
 	background-repeat: no-repeat;
-    background-image: url(/images/content_decor_bottom.png);
+    background-image: url(../images/content_decor_bottom.png);
     background-position: right bottom;
 }
 
@@ -116,7 +116,7 @@ select {
 	width: 982px;
 	height: 2px;
 	margin: 0 auto;
-    background-image: url(/images/decor_separator.png);
+    background-image: url(../images/decor_separator.png);
 }
 
 .decor_blue {
@@ -125,7 +125,7 @@ select {
 	margin: 0 auto;
 	margin-top: 2px;
 	margin-bottom: 2px;
-    background-image: url(/images/decor_blue.png);
+    background-image: url(../images/decor_blue.png);
 }
 
 #header {
@@ -134,7 +134,7 @@ select {
 	margin: 0 auto;
 	margin-top: 1px;
 	margin-bottom: 2px;
-    background-image: url(/images/header_alpha.png);
+    background-image: url(../images/header_alpha.png);
 }
 
 .menu {
@@ -147,14 +147,14 @@ select {
 	width: 12px;
 	height: 27px;
 	display: table-cell;
-    background-image: url(/images/menu-left.png);
+    background-image: url(../images/menu-left.png);
 }
 
 .menu .right {
 	width: 12px;
 	height: 27px;
 	display: table-cell;
-    background-image: url(/images/menu-right.png);
+    background-image: url(../images/menu-right.png);
 }
 
 .menu .bg {
@@ -163,7 +163,7 @@ select {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-    background-image: url(/images/menu-bg.png);
+    background-image: url(../images/menu-bg.png);
 }
 
 #usercontrol {
@@ -173,7 +173,7 @@ select {
 	margin-top: 2px;
 	height: 22px;
 	display: table;
-    background-image: url(/images/usercontrol_bg.png);
+    background-image: url(../images/usercontrol_bg.png);
     background-repeat: repeat-x;
 }
 
@@ -187,7 +187,7 @@ select {
 	min-height: 304px;
 	margin: 0 auto;
 	background-repeat: no-repeat;
-    background-image: url(/images/content_decor_top.png);
+    background-image: url(../images/content_decor_top.png);
     background-position: left top;
 }
 
@@ -202,7 +202,7 @@ select {
 	width: 899px;
 	height: 23px;
 	background-repeat: no-repeat;
-    background-image: url(/images/large_window_top.png);
+    background-image: url(../images/large_window_top.png);
     background-position: center;
 	font-weight: bold;
 }
@@ -224,14 +224,14 @@ select {
 	margin: 5px 5px 5px 5px;
 }
 
-.nyilas_hivatkozas {
-	background: url(/images/menu-decor-normal.png) no-repeat left center;
+.arrow-link {
+	background: url(../images/menu-decor-normal.png) no-repeat left center;
 	padding-left: 27px;
 	padding-right: 13px;
 }
 
-.nyilas_hivatkozas:hover {
-    background-image: url(/images/menu-decor-over.png);
+.arrow-link:hover {
+    background-image: url(../images/menu-decor-over.png);
 }
 
 .table {
@@ -274,14 +274,14 @@ select {
 	width: 8px;
 	height: 20px;
 	display: table-cell;
-    background: url(/images/tree-captionbox-left.png) no-repeat;
+    background: url(../images/tree-captionbox-left.png) no-repeat;
 }
 
 .table .row .cell .caption-right {
 	width: 8px;
 	height: 20px;
 	display: table-cell;
-    background: url(/images/tree-captionbox-right.png) no-repeat;
+    background: url(../images/tree-captionbox-right.png) no-repeat;
 }
 
 .table .row .cell .caption-bg {
@@ -290,7 +290,7 @@ select {
 	text-align: center;
 	vertical-align: middle;
 	font-weight: bold;
-    background: url(images/tree-captionbox-bg.png) repeat-x left center;
+    background: url(../images/tree-captionbox-bg.png) repeat-x left center;
 }
 
 .table .row .torrent_image {
@@ -529,7 +529,7 @@ select {
 	width: 8px;
 	height: 22px;
 	display: table-cell;
-    background-image: url(/images/button-bg-left.png);
+    background-image: url(../images/button-bg-left.png);
     background-position: left top;
 	background-repeat: no-repeat;
 }
@@ -547,7 +547,7 @@ select {
 	vertical-align: middle;
 	color: #ffffff;
 	display: table-cell;
-    background-image: url(/images/button-bg.png);
+    background-image: url(../images/button-bg.png);
     background-position: top;
 	background-repeat: repeat-x;
 }
@@ -556,7 +556,7 @@ select {
 	width: 8px;
 	height: 22px;
 	display: table-cell;
-    background-image: url(/images/button-bg-right.png);
+    background-image: url(../images/button-bg-right.png);
     background-position: left top;
 	background-repeat: no-repeat;
 }
