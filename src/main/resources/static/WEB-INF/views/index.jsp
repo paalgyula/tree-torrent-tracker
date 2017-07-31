@@ -11,7 +11,7 @@
 				<g:each in="${news}" var="newsItem">
 				<div class="large_window_bevel">
 					<div class="content">
-						<img src="images/vizjel.png" alt="" title="" align="right"/>
+						<img src="images/watermark.png" alt="" title="" align="right"/>
 						<h3>${newsItem.title}</h3>
 						<br/>
 						${newsItem.htmlcontent}

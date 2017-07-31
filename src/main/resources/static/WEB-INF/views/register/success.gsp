@@ -9,7 +9,7 @@
 				<div class="large_window_bevel">
 					<div class="content">
 						<br/><br/>
-						<img src="${request.contextPath}/images/vizjel.png" alt="TheTree&trade;" title="TheTree&trade;" align="left"/>
+						<img src="${request.contextPath}/images/watermark.png" alt="TheTree&trade;" title="TheTree&trade;" align="left"/>
 						Köszönjük, hogy minket választottál. Regisztrációd már <b>majdnem kész</b>. Egy megerősítő linket küldtünk a megadott E-Mail címedre.<br/>
 						Kattints a linkre, vagy másold be a linket a böngésződ címsorába, és máris aktiválva van az accountod.
 						<br/><br/>

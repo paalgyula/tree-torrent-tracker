@@ -10,7 +10,7 @@
             <div id="loginBox">
                 <div class="row">
                     <div class="label"></div>
-                    <div class="field"><img src="<spring:url value="/images/vizjel.png"/>" alt="TheTree&trade;" title="TheTree&trade;"/></div>
+                    <div class="field"><img src="<spring:url value="/images/watermark.png"/>" alt="TheTree&trade;" title="TheTree&trade;"/></div>
                 </div>
                 <div class="row">
                     <div class="label">

@@ -12,7 +12,7 @@
 		</div>
 		<div class="large_window_bevel">
 			<div class="content">
-				<img src="images/vizjel.png" alt="TheTree" title="TheTree" align="right" />
+				<img src="images/watermark.png" alt="TheTree" title="TheTree" align="right" />
 				<h3>Köszönjük bejelentésed!</h3>
 				Köszönjük, hogy megírtad nekünk javaslatodat/hibajelentésed, és ezáltal hozzájárultál az oldal továbbfejlesztéséhez.<br/>
 				<br/>
