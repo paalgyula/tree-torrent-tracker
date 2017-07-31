@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.com" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="robots" content="none noindex nofollow"/>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" media="screen" th:href="@{~/css/main.css}" href="css/main.css"/>
     <!--script type="text/javascript" src="../js/jquery.min.js"></script-->
 </head>
-<body>
+<body> 
     <div id="main_background">
         <div id="main_placeholder">
             <div id="content">
@@ -23,22 +23,22 @@
                 <div class="menu">
                     <div class="left"></div>
                     <div class="bg">
-                        <h:panelGroup rendered="#{empty trackerUser}">
-                            <a href="/users/login" class="nyilas_hivatkozas" th:text="#{home.login}"/>
-                            <a href="/users/register" class="nyilas_hivatkozas" th:text="#{home.register}"/>
-                        </h:panelGroup>
-                        <h:panelGroup rendered="#{not empty trackerUser}">
-                            <a href="/index" class="nyilas_hivatkozas">Főoldal</a>
-                            <a href="/torrents/search" class="nyilas_hivatkozas">Letöltés</a>
-                            <a href="/torrents/upload" class="nyilas_hivatkozas">Feltöltés</a>
-                            <a href="/torrents/requests" class="nyilas_hivatkozas">Kérések</a>
-                            <a href="/top10" class="nyilas_hivatkozas">Top10</a>
-                            <a href="/forum/index" class="nyilas_hivatkozas">Fórum</a>
-                            <a href="/wiki/index" class="nyilas_hivatkozas">Wiki</a>
-                            <a href="/users/list" class="nyilas_hivatkozas">Felhasználók</a>
-                            <a href="/bugs/index" class="nyilas_hivatkozas purple">Bugreport</a>
-                            <a href="/Logout" class="nyilas_hivatkozas">Kilépés</a>
-                        </h:panelGroup>
+                        <div th:remove="tag" th:unless="${#authentication.isAuthenticated()}">
+                            <a href="/login" class="arrow-link" th:text="#{home.login}">Login</a>
+                            <a href="/register" class="arrow-link" th:text="#{home.register}">Register</a>
+                        </div>
+                        <div th:remove="tag" th:if="${#authentication.isAuthenticated()}">
+                            <a href="/index" class="arrow-link">Főoldal</a>
+                            <a href="/torrents/search" class="arrow-link">Letöltés</a>
+                            <a href="/torrents/upload" class="arrow-link">Feltöltés</a>
+                            <a href="/torrents/requests" class="arrow-link">Kérések</a>
+                            <a href="/top10" class="arrow-link">Top10</a>
+                            <a href="/forum/index" class="arrow-link">Fórum</a>
+                            <a href="/wiki/index" class="arrow-link">Wiki</a>
+                            <a href="/users/list" class="arrow-link">Felhasználók</a>
+                            <a href="/bugs/index" class="arrow-link purple">Bugreport</a>
+                            <a href="/Logout" class="arrow-link">Kilépés</a>
+                        </div>
                     </div>
 
                     <div class="right"></div>
