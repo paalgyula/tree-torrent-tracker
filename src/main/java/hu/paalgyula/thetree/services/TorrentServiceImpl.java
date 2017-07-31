@@ -8,18 +8,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by paalgyula on 2016.10.27..
  */
+@Service
 @Scope("application")
 public class TorrentServiceImpl implements TorrentService {
-    private Logger log;
+    private Logger log = LoggerFactory.getLogger(TorrentService.class);
 
     @Override
     public void checkTorrent(InputStream fileStream) throws InvalidTorrentException {
@@ -39,7 +41,7 @@ public class TorrentServiceImpl implements TorrentService {
                 log.info("File in torrent: " + fileName);
             }
         } catch (IOException | NoSuchAlgorithmException e) {
-            log.log(Level.SEVERE, e.getMessage(), e);
+            log.error(e.getMessage(), e);
             throw new InvalidTorrentException(e);
         } finally {
             if (tempFile != null)

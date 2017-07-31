@@ -27,21 +27,21 @@
             <div class="menu" th:fragment="menu">
                 <div class="left"></div>
                 <div class="bg">
-                    <div th:remove="tag" th:unless="${#authentication.isAuthenticated()}">
+                    <div th:remove="tag" th:unless="${#authorization.expression('isAuthenticated()')}">
                         <a href="/login" class="arrow-link" th:text="#{home.login}">Login</a>
                         <a href="/register" class="arrow-link" th:text="#{home.register}">Register</a>
                     </div>
-                    <div th:remove="tag" th:if="${#authentication.isAuthenticated()}">
-                        <a href="/index" class="arrow-link">Főoldal</a>
-                        <a href="/torrents/search" class="arrow-link">Letöltés</a>
-                        <a href="/torrents/upload" class="arrow-link">Feltöltés</a>
-                        <a href="/torrents/requests" class="arrow-link">Kérések</a>
-                        <a href="/top10" class="arrow-link">Top10</a>
-                        <a href="/forum/index" class="arrow-link">Fórum</a>
-                        <a href="/wiki/index" class="arrow-link">Wiki</a>
-                        <a href="/users/list" class="arrow-link">Felhasználók</a>
-                        <a href="/bugs/index" class="arrow-link purple">Bugreport</a>
-                        <a href="/Logout" class="arrow-link">Kilépés</a>
+                    <div th:remove="tag" th:if="${#authorization.expression('isAuthenticated()')}">
+                        <a href="/index" class="arrow-link" th:text="#{menu.index}">Home</a>
+                        <a href="/torrents" class="arrow-link" th:text="#{menu.download}">Download</a>
+                        <a href="/torrents/upload" class="arrow-link" th:text="#{menu.upload}">Upload</a>
+                        <a href="/torrents/requests" class="arrow-link" th:text="#{menu.requests}">Requests</a>
+                        <a href="/top10" class="arrow-link" th:text="#{menu.top10}">Top10</a>
+                        <a href="/forum/index" class="arrow-link" th:text="#{menu.forum}">Forum</a>
+                        <a href="/wiki/index" class="arrow-link" th:text="#{menu.wiki}">Wiki</a>
+                        <a href="/users/list" class="arrow-link" th:text="#{menu.users}">Users</a>
+                        <a href="/bugs/index" class="arrow-link pink" th:text="#{menu.bugreport}">Bugreport</a>
+                        <a href="/logout" class="arrow-link" th:text="#{menu.logout}">Logout</a>
                     </div>
                 </div>
                 <div class="right"></div>
@@ -49,10 +49,10 @@
 
             <div class="decor_separator"></div>
 
-            <div th:fragment="user_stats" th:if="${#authentication.isAuthenticated()}" th:remove="tag">
+            <div th:fragment="user_stats" th:if="${#authorization.expression('isAuthenticated()')}" th:remove="tag">
                 <div id="usercontrol">
                     <div class="left">
-                        <a href="${userLink}">#{trackerUser.username}</a>
+                        <a href="${userLink}" th:text="${#authentication.name}">#{trackerUser.username}</a>
                         (#{trackerUser.title})
                         Pontok: <a href="#">#{trackerUser.points}</a>,
                         Arány: 0.00

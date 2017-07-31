@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('TheTree')">
+    <link rel="stylesheet" media="screen" href="../static/css/main.css"/>
+</head>
+<body>
+
+<div id="main_background">
+    <div id="main_placeholder">
+        <div id="content">
+            <div class="decor_blue"></div>
+            <div class="decor_separator"></div>
+            <div id="header"></div>
+            <div class="decor_separator"></div>
+
+            <div th:replace="fragments :: menu"></div>
+            <div class="decor_separator"></div>
+            <div th:replace="fragments :: user_stats"></div>
+
+            <div id="topBg">
+                <br/><br/>
+                <!-- Here comes the music :D -->
+                <form id="registerForm" method="post" autocomplete="off">
+
+                    <div id="loginBox">
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field">
+                                <img src="../static/images/watermark.png" alt="TheTree™" title="TheTree™"
+                                     th:src="@{~/images/watermark.png}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <label for="username" th:value="#{profile.username}">Username</label>:
+                            </div>
+                            <div class="field">
+                                <input type="text" th:value="*{username}" id="username"/>
+                                <h:message for="#{newUser.username}" showDetail="true"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <label for="password" th:value="#{profile.password}">Password</label>:
+                            </div>
+                            <div class="field">
+                                <input type="text" th:value="*{password}" id="password"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <label for="password2" th:text="#{profile.password_again}">Password again</label>:
+                            </div>
+                            <div class="field">
+                                <input type="password" value="#{newUser.password}" id="password2"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <label for="email" th:text="#{profile.email}">E-Mail address</label>:
+                            </div>
+                            <div class="field">
+                                <input type="email" value="#{newUser.email}" id="email"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">
+                                <label for="email2" th:text="#{profile.email_again}">E-Mail again</label>:
+                            </div>
+                            <div class="field">
+                                <input type="email" id="email2"/>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="label" th:text="#{profile.gender} + ':'">Gender:</div>
+                            <div class="field">
+                                <select name="gender">
+                                    <option value="0" selected="selected" th:text="#{profile.gender.male}">Male</option>
+                                    <option value="1" th:text="#{profile.gender.female}">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field">
+                                <span class="errorstring">
+                                    <h:messages for="email"/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Elmúltam 13 éves:</div>
+                            <div class="field"><input type="checkbox" name="past13"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Elfogadom a felhasználási feltételeket:</div>
+                            <div class="field"><input type="checkbox" name="agreeTerms"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="label"></div>
+                            <div class="field">
+                                <div class="button" action="#{registerController.register}">
+                                    <div class="button-left"></div>
+                                    <div class="content">regisztráció</div>
+                                    <div class="button-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div id="bg_placeholder"></div>
+        </div>
+        <div th:replace="fragments :: footer"></div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('TheTree')"></head>
+<body>
+
+<div id="main_background">
+    <div id="main_placeholder">
+        <div id="content">
+            <div class="decor_blue"></div>
+            <div class="decor_separator"></div>
+            <div id="header"></div>
+            <div class="decor_separator"></div>
+
+            <div th:replace="fragments :: menu"></div>
+            <div class="decor_separator"></div>
+            <div th:replace="fragments :: user_stats"></div>
+
+            <div id="topBg">
+                <br/><br/>
+                <!-- Here comes the music :D -->
+
+
+                <div class="large_window_top">
+                    <div class="legend">Kereső</div>
+                </div>
+                <div class="large_window_bevel">
+                    <div class="content">
+                        <!-- Lapozo -->
+                        <div class="pager">
+                            <paginate total="$ {torrents.size()}"/>
+                        </div>
+                        <!-- Lapozo vege -->
+                    </div>
+                </div>
+                <br/><br/>
+
+                <div class="large_window_top">
+                    <div class="legend">
+                        Torrentek
+                    </div>
+                </div>
+
+                <table class="table">
+                    <tr class="row">
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 35px;">Típus</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 412px">Név</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 80px;">Feltöltve</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 80px;">Méret</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 20px;">D</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 20px;">S</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 20px;">L</div>
+                            <div class="caption-right"></div>
+                        </td>
+                        <td class="cell caption">
+                            <div class="caption-left"></div>
+                            <div class="caption-bg" style="width: 81px;">Feltöltő</div>
+                            <div class="caption-right"></div>
+                        </td>
+                    </tr>
+
+
+                    <c:forEach items="#{torrentList}" var="torrent" varStatus="stat">
+                        <c:choose>
+                            <c:when test="${stat.index % 2 == 0}">
+                                <c:set var="oiClass" value="odd"/>
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="oiClass" value="even"/>
+                            </c:otherwise>
+                        </c:choose>
+                        <tr class="row ${oiClass}">
+                            <td class="cell caption">
+                                <h:graphicImage library="images" name="torrentpics/#{torrent.category.image}.gif"
+                                                style="margin-bottom: -2px;"
+                                                alt="#{torrent.category.category}"
+                                                title="#{torrent.category.category}"/>
+                            </td>
+                            <td class="cell caption">
+                                <h:link outcome="/torrents/show?torrentid=#{torrent.id}&amp;torrentname=#{tt:slugify(torrent.name)}">
+                                    ${torrent.name}
+                                </h:link>
+                            </td>
+                            <td class="cell caption c">
+                                <h:outputText value="#{torrent.uploaded}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{torrent.uploaded}">
+                                    <f:convertDateTime pattern="hh:mm"/>
+                                </h:outputText>
+                            </td>
+                            <td class="cell caption c">
+                                ${tt:formatBytes(torrent.size)}
+                            </td>
+                            <td class="cell caption c">
+                                ${torrent.downloaded}
+                            </td>
+                            <td class="cell caption c">
+                                ${torrent.seeders}
+                            </td>
+                            <td class="cell caption c">
+                                ${torrent.leechers}
+                            </td>
+                            <td class="cell caption c">
+                                ${torrent.uploader.username}
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
+                <!--
+                <g:each in="${torrents}" var="torrent" status="counter">
+                    <div class="table">
+                        <div class="row">
+                            <div class="torrent_image">
+                                <img src="images/torrentpics/${torrent.category.imageName}.gif" alt="${torrent.category.name}"
+                                     title="${torrent.category.name}"/>
+                            </div>
+                            <div class="torrent_details">
+                                <div class="class1<g:if test=" counter
+                                % 2 == 0">2
+                            </g:if>
+                            ">
+                            <div class="nev_container">
+                                <a href="torrentdl.tt?id=${torrent.id}"><img src="images/icons/dl.png" border="0" align="left"
+                                                                             title="Torrent letöltése" alt="Torrent letöltése"/></a>
+                                <a href="#"
+                                   onclick="$('#detail_${torrent.id}').slideToggle('slow'); return false;">${torrent.name}</a>
+                                <br/>&nbsp;
+                            </div>
+                            <div class="feltoltve_container">
+                                ${torrent.uploaded}
+                            </div>
+                            <div class="meret_container">
+                                <tree:formatBytes bytes="${torrent.size}"/>
+                            </div>
+                            <div class="dsl_container">
+                                ${torrent.downloaded}
+                            </div>
+                            <div class="dsl_container">
+                                <a href="torrent_details.tt?id={torrent.entry}#peers">${torrent.seeders}</a>
+                            </div>
+                            <div class="dsl_container">
+                                <a href="torrent_details.tt?id={torrent.entry}#peers">${torrent.leechers}</a>
+                            </div>
+                            <div class="feltolto_container">
+                                <a href="$ {createLink(controller:'users', action: 'view', params:[user: torrent.uploader.username])}">${torrent.uploader.username}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="torrent_details_content" id="detail_${torrent.id}">
+                <div class="content" id="detail_${torrent.id}_content">
+                    <b>Torrent leirása:</b><br/><br/>
+                    <g:if test="${torrent.description}">
+                        ${torrent.description}
+                    </g:if>
+                    <g:else>
+                        ..:: Nincs leirás ::..
+                    </g:else>
+                </div>
+                </div>
+                </g:each -->
+
+                <br/><br/>
+
+                <div class="large_window_top">
+                    <div class="legend">Lapozó</div>
+                </div>
+                <div class="large_window_bevel">
+                    <div class="content">
+                        <div class="pager">
+                            <c:if test="${page lt 1}">
+                                [<a href="?p=1">Első oldal</a>]
+                                [<a href="?p=${page-1}">Előző</a>]
+                            </c:if>
+
+                            [
+                            <c:forEach begin="0" end="${count / 25}" step="1" var="vpage" varStatus="vs">
+                                <c:choose>
+                                    <c:when test="${(vpage+1) == page}"><span class="rep3">${page}</span></c:when>
+                                    <c:otherwise><a href="?p=${vpage+1}">${vpage + 1}</a></c:otherwise>
+                                </c:choose>
+                                <c:if test="${!vs.last}"> |</c:if>
+                                <c:if test="${vs.last}">
+                                    <c:set var="pageCnt" value="${vs.index + 1}"/>
+                                </c:if>
+                            </c:forEach>
+                            ]
+
+                            <c:if test="${page gt pageCnt}">
+                                [<a href="?p=${page+1}">Következő</a>]
+                                [<a href="?p=${pageCnt}">Utolsó oldal</a>]
+                            </c:if>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+
+            </div>
+            <div id="bg_placeholder"></div>
+        </div>
+        <div th:replace="fragments :: footer"></div>
+    </div>
+</div>
+
+</body>
+</html>

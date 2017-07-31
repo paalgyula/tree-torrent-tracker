@@ -14,7 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 @Cacheable
-@Table(name = "users")
+@Table(name = "USERS")
 @NamedQueries({
         @NamedQuery(name = "User.findAll", query = "select u from User u order by u.id asc", hints = {
                 @QueryHint(name = "javax.persistence.cache.storeMode", value = "REFRESH"),
@@ -27,34 +27,31 @@ public class User implements Principal {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     private String password;
 
-    @Transient
-    private String password2;
-
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "registred")
+    @Column(name = "REGISTRED")
     private Date registred = new Date();
 
-    @Column(name = "lastlogin")
+    @Column(name = "LASTLOGIN")
     private Date lastlogin;
 
-    @Column(name = "points")
+    @Column(name = "POINTS")
     private int points = 0;
 
-    @Column(name = "uploaded")
+    @Column(name = "UPLOADED")
     private long uploaded = 0L;
 
-    @Column(name = "downloaded")
+    @Column(name = "DOWNLOADED")
     private long downloaded = 0L;
 
-    @Column(name = "title")
+    @Column(name = "TITLE")
     private String title = "Újonc";
 
     public Long getId() {
@@ -79,14 +76,6 @@ public class User implements Principal {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
     }
 
     public String getEmail() {
