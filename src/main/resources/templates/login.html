@@ -1,73 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.com" lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="robots" content="none noindex nofollow"/>
-    <meta name="author" content="Paál Gyula [http://www.paalgyula.com]"/>
-    <meta name="copyright" content="2013-2016, Paál Gyula."/>
-    <meta name="description" content="TheTree Torrent Tracker"/>
-    <title>TheTree™ <ui:insert name="title"> - Főoldal</ui:insert></title>
-    <link rel="icon" href="images/favicon.png" type="image/png"/>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/png"/>
-    <link rel="stylesheet" media="screen" th:href="@{~/css/main.css}" href="css/main.css"/>
-    <!--script type="text/javascript" src="../js/jquery.min.js"></script-->
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('TheTree')"></head>
 <body>
-	<div th:replace="index :: #main_background">
-	</div>
-	
-	<div class="large_window_top">
-            <div class="legend">Belépés</div>
-        </div>
-        <div class="large_window_bevel">
-            <div class="content">
+
+<div id="main_background">
+    <div id="main_placeholder">
+        <div id="content">
+            <div class="decor_blue"></div>
+            <div class="decor_separator"></div>
+            <div id="header"></div>
+            <div class="decor_separator"></div>
+
+            <div th:replace="fragments :: menu"></div>
+            <div class="decor_separator"></div>
+            <div th:replace="fragments :: user_stats"></div>
+
+            <div id="topBg">
                 <br/><br/>
 
-                <form method="post" action="j_security_check" id="loginForm">
-                    <div id="loginBox">
-                        <div class="row">
-                            <div class="label"></div>
-                            <div class="field">
-                                <img src="#{resource['/images/vizjel.png']}" alt="TheTree™" title="TheTree™"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Felhasználónév:</div>
-                            <div class="field">
-                                <input type="text" name="j_username"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Jelszó:</div>
-                            <div class="field">
-                                <input type="password" name="j_password"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Maradjon bejelentkezve:</div>
-                            <div class="field"><input type="checkbox" name="j_remember_me"/></div>
-                        </div>
-                        <div class="row">
-                            <div class="label"></div>
-                            <div class="field"><span class="errorstring">${hibauzenet}</span></div>
-                        </div>
-                        <div class="row">
-                            <div class="label" style="text-align:right">
-                                <input type="submit" style="visibility: hidden" id="submitBtn"/>
-                            </div>
-                            <div class="field">
-                                <div class="button" onclick="document.getElementById('submitBtn').click();">
-                                    <div class="button-left"></div>
-                                    <div class="content">belépés</div>
-                                    <div class="button-right"></div>
+                <div class="large_window_top">
+                    <div class="legend">Belépés</div>
+                </div>
+                <div class="large_window_bevel">
+                    <div class="content">
+                        <br/><br/>
+
+                        <form method="post" action="/login" id="loginForm">
+                            <div id="loginBox">
+                                <div class="row">
+                                    <div class="label"></div>
+                                    <div class="field">
+                                        <img th:src="@{~/images/vizjel.png}" src="../static/images/vizjel.png" alt="TheTree™" title="TheTree™"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">Felhasználónév:</div>
+                                    <div class="field">
+                                        <input type="text" name="username"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">Jelszó:</div>
+                                    <div class="field">
+                                        <input type="password" name="password"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="label">Maradjon bejelentkezve:</div>
+                                    <div class="field"><input type="checkbox" name="remember-me"/></div>
+                                </div>
+                                <div class="row">
+                                    <div class="label"></div>
+                                    <div class="field"><span class="errorstring">${hibauzenet}</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="label" style="text-align:right">
+                                        <input type="submit" style="visibility: hidden" id="submitBtn"/>
+                                    </div>
+                                    <div class="field">
+                                        <div class="button" onclick="document.getElementById('submitBtn').click();">
+                                            <div class="button-left"></div>
+                                            <div class="content">belépés</div>
+                                            <div class="button-right"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
+                        <br/><br/>
                     </div>
-                </form>
-                <br/><br/>
+                </div>
+
             </div>
+            <div id="bg_placeholder"></div>
         </div>
-	
+        <div th:replace="fragments :: footer"></div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -1,8 +1,19 @@
 /target
 **/*.class
+
+.apt_generated
+.idea
+.settings
+
+# Idea Project files
 *.iml
 *.iws
 *.ipr
 *.iws
 *.ids
 .idea
+
+# Eclipse project files
+.classpath
+.factorypath
+.project

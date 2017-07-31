@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="head(title)">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="none noindex nofollow"/>
+    <meta name="author" content="Paál Gyula [http://www.paalgyula.com]"/>
+    <meta name="copyright" content="2013-2017, Paál Gyula."/>
+    <meta name="description" content="TheTree Torrent Tracker"/>
+    <title th:text="${title}">TheTree</title>
+    <link rel="icon" href="../static/images/favicon.png" type="image/png"
+          th:href="@{~/images/favicon.png}"/>
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/png"
+          th:href="@{~/images/favicon.png}"/>
+    <link rel="stylesheet" media="screen" href="../static/css/main.css"
+          th:href="@{~/css/main.css}"/>
+    <!--script type="text/javascript" src="../js/jquery.min.js"></script-->
+</head>
+<body>
+<div id="main_background">
+    <div id="main_placeholder">
+        <div id="content">
+            <div class="decor_blue"></div>
+            <div class="decor_separator"></div>
+            <div id="header"></div>
+            <div class="decor_separator"></div>
+
+            <div class="menu" th:fragment="menu">
+                <div class="left"></div>
+                <div class="bg">
+                    <div th:remove="tag" th:unless="${#authentication.isAuthenticated()}">
+                        <a href="/login" class="arrow-link" th:text="#{home.login}">Login</a>
+                        <a href="/register" class="arrow-link" th:text="#{home.register}">Register</a>
+                    </div>
+                    <div th:remove="tag" th:if="${#authentication.isAuthenticated()}">
+                        <a href="/index" class="arrow-link">Főoldal</a>
+                        <a href="/torrents/search" class="arrow-link">Letöltés</a>
+                        <a href="/torrents/upload" class="arrow-link">Feltöltés</a>
+                        <a href="/torrents/requests" class="arrow-link">Kérések</a>
+                        <a href="/top10" class="arrow-link">Top10</a>
+                        <a href="/forum/index" class="arrow-link">Fórum</a>
+                        <a href="/wiki/index" class="arrow-link">Wiki</a>
+                        <a href="/users/list" class="arrow-link">Felhasználók</a>
+                        <a href="/bugs/index" class="arrow-link purple">Bugreport</a>
+                        <a href="/Logout" class="arrow-link">Kilépés</a>
+                    </div>
+                </div>
+                <div class="right"></div>
+            </div>
+
+            <div class="decor_separator"></div>
+
+            <div th:fragment="user_stats" th:if="${#authentication.isAuthenticated()}" th:remove="tag">
+                <div id="usercontrol">
+                    <div class="left">
+                        <a href="${userLink}">#{trackerUser.username}</a>
+                        (#{trackerUser.title})
+                        Pontok: <a href="#">#{trackerUser.points}</a>,
+                        Arány: 0.00
+                        Fel: #{tt:formatBytes(trackerUser.uploaded)}
+                        Le: #{tt:formatBytes(trackerUser.downloaded)}
+                        [<a href="#">Támogatás</a>]
+                    </div>
+                </div>
+                <div class="decor_blue"></div>
+            </div>
+
+            <div id="topBg">
+                <br/><br/>
+                <div th:fragment="my_body(content)">
+                    [ Body content goes here: <span th:remove="tag" th:text="${content}">XxX</span> ]
+                </div>
+            </div>
+            <div id="bg_placeholder"></div>
+        </div>
+        <div th:fragment="footer" id="footer">
+            <div class="decor_separator"></div>
+            <div class="menu">
+                <div class="left"></div>
+                <div class="bg">
+                    <small>TheTree Torrent tracker r<i>152</i> | Hosted@OpenShift - Powered: Paál Gyula</small>
+                </div>
+                <div class="right"></div>
+            </div>
+            <div class="decor_separator"></div>
+            <div class="decor_blue"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

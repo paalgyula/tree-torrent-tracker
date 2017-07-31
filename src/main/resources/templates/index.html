@@ -1,85 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags" lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="robots" content="none noindex nofollow"/>
-    <meta name="author" content="Paál Gyula [http://www.paalgyula.com]"/>
-    <meta name="copyright" content="2013-2016, Paál Gyula."/>
-    <meta name="description" content="TheTree Torrent Tracker"/>
-    <title>TheTree™ <ui:insert name="title"> - Főoldal</ui:insert></title>
-    <link rel="icon" href="images/favicon.png" type="image/png"/>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/png"/>
-    <link rel="stylesheet" media="screen" th:href="@{~/css/main.css}" href="css/main.css"/>
-    <!--script type="text/javascript" src="../js/jquery.min.js"></script-->
-</head>
-<body> 
-    <div id="main_background">
-        <div id="main_placeholder">
-            <div id="content">
-                <div class="decor_blue"></div>
-                <div class="decor_separator"></div>
-                <div id="header"></div>
-                <div class="decor_separator"></div>
-                <div class="menu">
-                    <div class="left"></div>
-                    <div class="bg">
-                        <div th:remove="tag" th:unless="${#authentication.isAuthenticated()}">
-                            <a href="/login" class="arrow-link" th:text="#{home.login}">Login</a>
-                            <a href="/register" class="arrow-link" th:text="#{home.register}">Register</a>
-                        </div>
-                        <div th:remove="tag" th:if="${#authentication.isAuthenticated()}">
-                            <a href="/index" class="arrow-link">Főoldal</a>
-                            <a href="/torrents/search" class="arrow-link">Letöltés</a>
-                            <a href="/torrents/upload" class="arrow-link">Feltöltés</a>
-                            <a href="/torrents/requests" class="arrow-link">Kérések</a>
-                            <a href="/top10" class="arrow-link">Top10</a>
-                            <a href="/forum/index" class="arrow-link">Fórum</a>
-                            <a href="/wiki/index" class="arrow-link">Wiki</a>
-                            <a href="/users/list" class="arrow-link">Felhasználók</a>
-                            <a href="/bugs/index" class="arrow-link purple">Bugreport</a>
-                            <a href="/Logout" class="arrow-link">Kilépés</a>
-                        </div>
-                    </div>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('TheTree')"></head>
+<body>
 
-                    <div class="right"></div>
-                </div>
-                <div class="decor_separator"></div>
-                <h:panelGroup rendered="true">
-                    <div id="usercontrol">
-                        <div class="left">
-                            <a href="${userLink}">#{trackerUser.username}</a>
-                            (#{trackerUser.title})
-                            Pontok: <a href="#">#{trackerUser.points}</a>,
-                            Arány: 0.00
-                            Fel: #{tt:formatBytes(trackerUser.uploaded)}
-                            Le: #{tt:formatBytes(trackerUser.downloaded)}
-                            [<a href="#">Támogatás</a>]
-                        </div>
-                    </div>
-                </h:panelGroup>
+<div id="main_background">
+    <div id="main_placeholder">
+        <div id="content">
+            <div class="decor_blue"></div>
+            <div class="decor_separator"></div>
+            <div id="header"></div>
+            <div class="decor_separator"></div>
 
-                <div class="decor_blue"></div>
-                <div id="topBg">
-                    <br/><br/>
-                    <ui:insert name="body">
-                        [ Body content goes here ]
-                    </ui:insert>
+            <div th:replace="fragments :: menu"></div>
+            <div class="decor_separator"></div>
+            <div th:replace="fragments :: user_stats"></div>
+
+            <div id="topBg">
+                <br/><br/>
+                <!-- Here comes the music :D -->
+                <div class="large_window_top">
+                    <div class="legend">Hírek, újdonságok</div>
                 </div>
-                <div id="bg_placeholder"></div>
-            </div>
-            <div id="footer">
-                <div class="decor_separator"></div>
-                <div class="menu">
-                    <div class="left"></div>
-                    <div class="bg">
-                        <small>TheTree Torrent tracker r<i>152</i> | Hosted@OpenShift - Powered: Paál Gyula</small>
+                <div class="large_window_bevel">
+                    <div class="content">
+                        <br/><br/>
+                        <ui:repeat value="#{feedItemList}" var="feedItem">
+
+                        </ui:repeat>
+                        <br/><br/>
                     </div>
-                    <div class="right"></div>
                 </div>
-                <div class="decor_separator"></div>
-                <div class="decor_blue"></div>
+
             </div>
+            <div id="bg_placeholder"></div>
         </div>
+        <div th:replace="fragments :: footer"></div>
     </div>
+</div>
+
 </body>
 </html>
