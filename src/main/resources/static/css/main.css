@@ -254,23 +254,22 @@ select {
     text-align: center;
 }
 
-.table .row .cell .caption-left {
-	width: 8px;
-	height: 20px;
-	display: table-cell;
-    background: url(../images/tree-captionbox-left.png) no-repeat;
+.table .row th {
+    background: url(../images/tree-captionbox-bg.png) repeat-x left top;
 }
 
-.table .row .cell .caption-right {
-	width: 8px;
-	height: 20px;
-	display: table-cell;
-    background: url(../images/tree-captionbox-right.png) no-repeat;
+.table .row th::before {
+    content: url(../images/tree-captionbox-left.png);
+    float: left;
+}
+
+.table .row th::after {
+    content: url(../images/tree-captionbox-right.png);
+    float: right;
 }
 
 .table .row .cell .caption-bg {
 	height: 20px;
-	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
 	font-weight: bold;

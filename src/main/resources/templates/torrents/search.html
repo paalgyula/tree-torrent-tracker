@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/XSL/Transform" lang="en">
 <head th:replace="fragments :: head('TheTree')"></head>
 <body>
 
@@ -35,55 +35,56 @@
                 <br/><br/>
 
                 <div class="large_window_top">
-                    <div class="legend">
-                        Torrentek
-                    </div>
+                    <div class="legend" th:text="#{torrents}">Torrents</div>
                 </div>
 
                 <table class="table">
                     <tr class="row">
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 35px;">Típus</div>
-                            <div class="caption-right"></div>
-                        </td>
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 412px">Név</div>
-                            <div class="caption-right"></div>
-                        </td>
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 80px;">Feltöltve</div>
-                            <div class="caption-right"></div>
-                        </td>
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 80px;">Méret</div>
-                            <div class="caption-right"></div>
-                        </td>
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 20px;">D</div>
-                            <div class="caption-right"></div>
-                        </td>
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 20px;">S</div>
-                            <div class="caption-right"></div>
-                        </td>
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 20px;">L</div>
-                            <div class="caption-right"></div>
-                        </td>
-                        <td class="cell caption">
-                            <div class="caption-left"></div>
-                            <div class="caption-bg" style="width: 81px;">Feltöltő</div>
-                            <div class="caption-right"></div>
-                        </td>
+                        <th class="cell caption">Típus</th>
+                        <th class="cell caption">Név</th>
+                        <th class="cell caption">Feltöltve</th>
+                        <th class="cell caption">Méret</th>
+                        <th class="cell caption">D</th>
+                        <th class="cell caption">S</th>
+                        <th class="cell caption">L</th>
+                        <th class="cell caption">Feltöltő</th>
                     </tr>
 
+                    <th:block th:remove="tag" th:each="torrent : ${torrents}">
+                        <tr class="row">
+                            <td class="cell caption">
+                                <img th:src="@{~/images/torrentpics/{category}.gif(category=${torrent.category.image})}"
+                                                style="margin-bottom: -2px;"
+                                                th:alt="${torrent.category.category}"
+                                                th:title="${torrent.category.category}"/>
+                            </td>
+                            <td class="cell caption" th:text="${torrent.name}">
+                                <h:link outcome="/torrents/show?torrentid=#{torrent.id}&amp;torrentname=#{tt:slugify(torrent.name)}">
+                                    ${torrent.name}
+                                </h:link>
+                            </td>
+                            <td class="cell caption c" style="white-space: nowrap;">
+                                <span th:if="${torrent.uploaded}" th:text="${#dates.format(torrent.uploaded, 'yyyy-MM-dd')}"></span>
+                                <br/>
+                                <span th:if="${torrent.uploaded}" th:text="${#dates.format(torrent.uploaded, 'hh:mm')}"></span>
+                            </td>
+                            <td class="cell caption c" th:text="${torrent.size}">
+                                ${tt:formatBytes(torrent.size)}
+                            </td>
+                            <td class="cell caption c" th:text="${torrent.downloaded}">
+                                ${torrent.downloaded}
+                            </td>
+                            <td class="cell caption c" th:text="${torrent.seeders}">
+                                ${torrent.seeders}
+                            </td>
+                            <td class="cell caption c" th:text="${torrent.leechers}">
+                                ${torrent.leechers}
+                            </td>
+                            <td class="cell caption c" th:text="${torrent.uploader.username}">
+                                ${torrent.uploader.username}
+                            </td>
+                        </tr>
+                    </th:block>
 
                     <c:forEach items="#{torrentList}" var="torrent" varStatus="stat">
                         <c:choose>

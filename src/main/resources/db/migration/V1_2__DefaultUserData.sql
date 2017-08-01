@@ -13,8 +13,8 @@ INSERT INTO USER_ROLES (USER_ID, ROLE_ID) VALUES (0, 1);
 INSERT INTO CATEGORY (ID, CATEGORY, IMAGE) VALUES (0, 'DVD Film', 'dvd');
 INSERT INTO CATEGORY (ID, CATEGORY, IMAGE) VALUES (1, 'DVD-9 Film', 'dvd9');
 
---insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (0, FALSE , '', 100, '', 3, 'Teszt 1', 12, 51251251, {ts '2016-11-05 09:24:00.00'}, 0, 0);
---insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (0, FALSE , '', 101, '', 3, 'Teszt 2', 12, 5125125, {ts '2016-11-05 10:24:00.00'}, 0, 1);
---insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (0, FALSE , '', 102, '', 3, 'Teszt 3', 12, 512512, {ts '2016-11-05 11:24:00.00'}, 0, 2);
---insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (0, FALSE , '', 103, '', 3, 'Teszt 4', 12, 51251, {ts '2016-11-05 13:24:00.00'}, 0, 3);
+insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (0, FALSE , '', 100, '', 3, 'Teszt 1', 12, 51251251, PARSEDATETIME('31-05-13 11:34:24','dd-MM-yy hh:mm:ss'), 0, 0);
+insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (0, FALSE , '', 101, '', 3, 'Teszt 2', 12, 5125125, null, 0, 1);
+insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (1, FALSE , '', 102, '', 3, 'Teszt 3', 12, 512512, null, 0, 2);
+insert into torrents (category_id, checked, description, downloaded, info_hash, leechers, name, seeders, size, uploaded, uploader, id) values (1, FALSE , '', 103, '', 3, 'Teszt 4', 12, 51251, null, 0, 3);
 
