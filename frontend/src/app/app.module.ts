@@ -12,6 +12,8 @@ import { SearchComponent } from './torrents/search/search.component';
 import { TorrentsService } from './torrents/torrents.service';
 import { ByteformatPipe } from './pipes/byteformat.pipe';
 import { RouterModule } from '@angular/router';
+import { LoginGuard } from './login.guard';
+import { LoginService } from './login/login.service';
 
 
 
@@ -30,7 +32,7 @@ import { RouterModule } from '@angular/router';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [TorrentsService],
+  providers: [TorrentsService, LoginService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

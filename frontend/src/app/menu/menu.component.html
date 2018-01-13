@@ -1,32 +1,39 @@
-<div class="menu">
-    <div class="left"></div>
-    <div class="bg">
-        <a routerLink="Login" class="nyilas_hivatkozas">Belépés</a>
-        <a routerLink="Register" class="nyilas_hivatkozas">Regisztráció</a>
+<div>
+    <div class="menu">
+        <div class="left"></div>
+        <div class="bg">
+            <span [hidden]="trackerUser">
+                <a routerLink="Login" class="nyilas_hivatkozas">Belépés</a>
+                <a routerLink="Register" class="nyilas_hivatkozas">Regisztráció</a>
+            </span>
 
-        <span *ngIf="trackerUser">
-            <a routerLink="News" class="nyilas_hivatkozas">Főoldal</a>
-            <a routerLink="Torrents/Search" class="nyilas_hivatkozas">Letöltés</a>
-            <a routerLink="Torrents/Upload" class="nyilas_hivatkozas">Feltöltés</a>
-            <a routerLink="/torrents/requests" class="nyilas_hivatkozas">Kérések</a>
-            <a routerLink="/top10" class="nyilas_hivatkozas">Top10</a>
-            <a routerLink="/forum/index" class="nyilas_hivatkozas">Fórum</a>
-            <a routerLink="/wiki/index" class="nyilas_hivatkozas">Wiki</a>
-            <a routerLink="/users/list" class="nyilas_hivatkozas">Felhasználók</a>
-            <a routerLink="/bugs/index" class="nyilas_hivatkozas purple">Bugreport</a>
-            <a href="/Logout" class="nyilas_hivatkozas">Kilépés</a>
-        </span>
+            <span [hidden]="!trackerUser">
+                <a routerLink="News" class="nyilas_hivatkozas">Főoldal</a>
+                <a routerLink="Torrents/Search" class="nyilas_hivatkozas">Letöltés</a>
+                <a routerLink="Torrents/Upload" class="nyilas_hivatkozas">Feltöltés</a>
+                <a routerLink="/torrents/requests" class="nyilas_hivatkozas">Kérések</a>
+                <a routerLink="/top10" class="nyilas_hivatkozas">Top10</a>
+                <a routerLink="/forum/index" class="nyilas_hivatkozas">Fórum</a>
+                <a routerLink="/wiki/index" class="nyilas_hivatkozas">Wiki</a>
+                <a routerLink="/users/list" class="nyilas_hivatkozas">Felhasználók</a>
+                <a routerLink="/bugs/index" class="nyilas_hivatkozas purple">Bugreport</a>
+                <a href="/Logout" class="nyilas_hivatkozas">Kilépés</a>
+            </span>
+        </div>
+        <div class="right"></div>
     </div>
-    <div class="right"></div>
-</div>
 
-<div class="decor_separator"></div>
+    <div class="decor_separator"></div>
 
-<div id="usercontrol" *ngIf="trackerUser">
-    <div class="left">
-        <a href="userLink">{{trackerUser.username}}</a>
-        ({{trackerUser.title}}) Pontok:
-        <a href="#">{{trackerUser.points}}</a>, Arány: 0.00 Fel: {{trackerUser.uploaded}} Le: {{trackerUser.downloaded}}
-        <span>[<a href="#">Támogatás</a>]</span>
+    <div id="usercontrol" *ngIf="trackerUser">
+        <div class="left">
+            <a href="userLink">{{trackerUser.username}}</a>
+            ({{trackerUser.title}}) Pontok:
+            <a href="#">{{trackerUser.points}}</a>, Arány: 0.00 Fel: {{trackerUser.uploaded | byteformat}} Le: {{trackerUser.downloaded
+            | byteformat}}
+            <span>
+                [ <a href="#">Támogatás</a> ]
+            </span>
+        </div>
     </div>
 </div>

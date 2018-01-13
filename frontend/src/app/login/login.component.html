@@ -5,7 +5,7 @@
     <div class="content">
         <br/>
         <br/>
-        <form method="post" action="loginAction" id="loginForm">
+        <form #loginForm="ngForm" name="logindata" (ngSubmit)="onSubmit()">
             <div id="loginBox">
                 <div class="row">
                     <div class="label"></div>
@@ -16,33 +16,32 @@
                 <div class="row">
                     <div class="label">Felhasználónév:</div>
                     <div class="field">
-                        <input type="text" name="j_username" />
+                        <input type="text" name="username" [(ngModel)]="logindata.username" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="label">Jelszó:</div>
                     <div class="field">
-                        <input type="password" name="j_password" />
+                        <input type="password" name="password" [(ngModel)]="logindata.password" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="label">Maradjon bejelentkezve:</div>
                     <div class="field">
-                        <input type="checkbox" name="j_remember_me" />
+                        <input type="checkbox" name="remember" [(ngModel)]="logindata.remember" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="logindata">
                     <div class="label">&nbsp;</div>
                     <div class="field">
-                        <span class="errorstring">error-msg</span>
+                        <span class="errorstring">{{logindata | json}}</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="label" style="text-align:right">
-                        <input type="submit" style="visibility: hidden" id="submitBtn" />
+                    <div class="label">
                     </div>
                     <div class="field">
-                        <div class="button" onclick="document.getElementById('submitBtn').click();">
+                        <div class="button" (click)="onSubmit()">
                             <div class="button-left"></div>
                             <div class="content">belépés</div>
                             <div class="button-right"></div>
