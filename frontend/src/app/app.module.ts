@@ -9,7 +9,9 @@ import { MenuComponent } from './menu/menu.component';
 import { NewsComponent } from './news/news.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './torrents/search/search.component';
-import { TorrentsService } from './torrents.service';
+import { TorrentsService } from './torrents/torrents.service';
+import { ByteformatPipe } from './pipes/byteformat.pipe';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,7 +21,8 @@ import { TorrentsService } from './torrents.service';
     LoginComponent,
     MenuComponent,
     NewsComponent,
-    SearchComponent
+    SearchComponent,
+    ByteformatPipe
   ],
   imports: [
     BrowserModule,

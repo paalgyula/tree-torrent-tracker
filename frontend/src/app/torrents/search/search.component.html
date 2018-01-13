@@ -19,7 +19,7 @@
 
 <table class="table">
     <tr class="row">
-        <th class="cell caption">Típus</th>
+        <th class="cell caption" style="width: 50px; overflow:hidden;">Típus</th>
         <th class="cell caption">Név</th>
         <th class="cell caption">Feltöltve</th>
         <th class="cell caption">Méret</th>
@@ -29,7 +29,8 @@
         <th class="cell caption">Feltöltő</th>
     </tr>
 
-    <tr class="row odd" *ngFor="let torrent of torrents">
+    <tr class="row" *ngFor="let torrent of torrents; let i = index"
+    [ngClass]="{odd: i%2, even:!i%2}">
         <td class="cell caption">
             <img [src]="'assets/images/torrentpics/' + torrent.category.img + '.gif'" style="margin-bottom: -2px;"
                 [title]="torrent.category.name"
@@ -41,12 +42,13 @@
             </a>
         </td>
         <td class="cell caption c" style="white-space: nowrap;">
-            <span>{{torrent.uploaded}}</span>
-            <br/>
-            <span>{{torrent.downloaded}}</span>
+            <span>
+                {{torrent.uploaded | date:'yyyy-MM-dd'}}<br/>
+                {{torrent.uploaded | date:'hh:mm'}}
+            </span>
         </td>
         <td class="cell caption c">
-            {{torrent.size}}
+            {{torrent.size | byteformat}}
         </td>
         <td class="cell caption c">
             {{torrent.downloaded}}

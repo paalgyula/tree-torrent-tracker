@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Torrent, TorrentsService } from '../../torrents.service';
+import { Torrent, TorrentsService } from '../torrents.service';
 
 @Component({
     selector: 'app-search',
