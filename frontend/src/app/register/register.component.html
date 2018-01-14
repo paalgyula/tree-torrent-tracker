@@ -1,10 +1,10 @@
 <div>
-    <form #registerForm="ngForm" id="registerForm" autocomplete="off">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div id="loginBox">
             <div class="row">
                 <div class="label"></div>
                 <div class="field">
-                    <img src="../../assets/images/watermark.png" alt="TheTree™" title="TheTree™"/>
+                    <img src="../../assets/images/watermark.png" alt="TheTree™" title="TheTree™" />
                 </div>
             </div>
             <div class="row">
@@ -12,7 +12,10 @@
                     <label for="username">Username</label>:
                 </div>
                 <div class="field">
-                    <input type="text" name="username" id="username" />
+                    <input type="text" formControlName="username" />
+                    <div class="errorstring" *ngIf="registerForm.controls.username.errors?.NotAllowedCharacters">
+                        The username can contain only upper and lowercase letters numbers and '-' '_' and '.' characters
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -20,7 +23,7 @@
                     <label for="password" i18n="@@password">Password</label>:
                 </div>
                 <div class="field">
-                    <input type="text" name="password" id="password" />
+                    <input type="password" formControlName="password" name="password" id="password" />
                 </div>
             </div>
             <div class="row">
@@ -28,7 +31,10 @@
                     <label for="password2" i18n="@@password-again">Password again</label>:
                 </div>
                 <div class="field">
-                    <input type="password" name="password-again" id="password2" />
+                    <input type="password" formControlName="passwordAgain" name="password-again" id="password2" />
+                    <div class="errorstring" *ngIf="registerForm.controls.passwordAgain.errors?.MatchPassword">
+                        The two password doesnt match
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -36,7 +42,7 @@
                     <label for="email" i18n="@@email-address">E-Mail address</label>:
                 </div>
                 <div class="field">
-                    <input type="email" name="email" id="email" />
+                    <input type="email" formControlName="email" name="email" id="email" />
                 </div>
             </div>
             <div class="row">
@@ -44,46 +50,49 @@
                     <label for="email2" i18n="@@email-again">E-Mail again</label>:
                 </div>
                 <div class="field">
-                    <input type="email" name="email-again" id="email2" />
+                    <input type="email" formControlName="emailAgain" name="email-again" id="email2" (paste)="false" />
+                    <div class="errorstring" *ngIf="registerForm.controls.emailAgain.errors?.MatchEmail">
+                        The two email address doesnt match
+                    </div>
                 </div>
             </div>
 
 
             <div class="row">
-                <div class="label" th:text="#{profile.gender} + ':'">Gender:</div>
+                <div class="label" i18n="@@gender">Gender:</div>
                 <div class="field">
-                    <select name="gender">
-                        <option value="0" selected="selected" i18n="@@male">Male</option>
-                        <option value="1" i18n="@@female">Female</option>
+                    <select name="gender" formControlName="gender">
+                        <option value="Male" i18n="@@male">Male</option>
+                        <option value="Female" i18n="@@female">Female</option>
                     </select>
                 </div>
             </div>
-
 
             <div class="row">
                 <div class="label"></div>
                 <div class="field">
                     <span class="errorstring">
-                        {{errorMessage}}
+                        {{registerForm.value |json}}
                     </span>
                 </div>
             </div>
+
             <div class="row">
                 <div class="label" i18n="@@past15">Elmúltam 15 éves:</div>
                 <div class="field">
-                    <input type="checkbox" name="past15" />
+                    <input type="checkbox" name="past15" formControlName="past15" />
                 </div>
             </div>
             <div class="row">
                 <div class="label">Elfogadom a felhasználási feltételeket:</div>
                 <div class="field">
-                    <input type="checkbox" name="agreeTerms" />
+                    <input type="checkbox" name="acceptTerms" formControlName="acceptTerms" />
                 </div>
             </div>
             <div class="row">
                 <div class="label"></div>
                 <div class="field">
-                    <div class="button">
+                    <div class="button" (click)="onSubmit()">
                         <span class="content">regisztráció</span>
                     </div>
                 </div>

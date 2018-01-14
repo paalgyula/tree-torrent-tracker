@@ -72,8 +72,10 @@ select {
   vertical-align: middle;
 }
 
-.error {
-  border: #ff0000 1px solid !important;
+.error, input.ng-invalid {
+  border-left: #ff0000 3px solid !important;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 #main_background {

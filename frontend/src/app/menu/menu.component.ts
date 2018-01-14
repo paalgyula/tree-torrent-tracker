@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TrackerUser } from '../domain/tracker-user';
-import { LoginService } from '../login/login.service';
+import { UserService } from '../services/user.service';
 
 @Component({
     selector: 'app-menu',
@@ -11,11 +11,11 @@ export class MenuComponent implements OnInit {
 
     public trackerUser: TrackerUser;
 
-    constructor(private loginService: LoginService) {
+    constructor(private userService: UserService) {
     }
 
     ngOnInit() {
-        this.loginService.userChange.subscribe(user => {
+        this.userService.userChange.subscribe(user => {
             this.trackerUser = user;
             console.log(user);
         });

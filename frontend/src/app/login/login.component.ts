@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
     selector: 'app-login',
@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
         remember: boolean
     };
 
-    constructor(private loginService: LoginService,
+    constructor(private userService: UserService,
         private router: Router) { }
 
     ngOnInit() {
-        if (this.loginService.isLoggedIn) {
+        if (this.userService.isLoggedIn) {
             this.router.navigate(['News']);
         }
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     }
 
     public onSubmit(): void {
-        this.loginService.login(this.logindata.username, this.logindata.password);
+        this.userService.login(this.logindata.username, this.logindata.password);
     }
 
 }

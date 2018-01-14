@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -13,8 +13,8 @@ import { TorrentsService } from './torrents/torrents.service';
 import { ByteformatPipe } from './pipes/byteformat.pipe';
 import { RouterModule } from '@angular/router';
 import { LoginGuard } from './login.guard';
-import { LoginService } from './login/login.service';
 import { RegisterComponent } from './register/register.component';
+import { UserService } from './services/user.service';
 
 
 
@@ -31,10 +31,11 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule
   ],
-  providers: [TorrentsService, LoginService, LoginGuard],
+  providers: [TorrentsService, UserService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

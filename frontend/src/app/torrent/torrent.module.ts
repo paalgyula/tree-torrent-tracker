@@ -4,11 +4,23 @@ import { SearchComponent } from './search/search.component';
 import { DetailsComponent } from './details/details.component';
 import { UploadComponent } from './upload/upload.component';
 import { ReportComponent } from './report/report.component';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from '../login.guard';
+
+const routes: Routes = [
+    { path: 'Search', component: SearchComponent, canActivate: [LoginGuard] },
+    { path: 'Report', component: ReportComponent },
+    { path: 'Details', component: DetailsComponent },
+    { path: 'Upload', component: UploadComponent, canActivate: [LoginGuard] },
+    { path: '**', redirectTo: 'Search' }
+];
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [SearchComponent, DetailsComponent, UploadComponent, ReportComponent]
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule
+    ],
+    exports: [RouterModule],
+    declarations: [SearchComponent, DetailsComponent, UploadComponent, ReportComponent]
 })
 export class TorrentModule { }

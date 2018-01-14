@@ -7,12 +7,11 @@ import { LoginGuard } from './login.guard';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-    //{ path: 'Torrents/Search', component: SearchComponent, canActivate: [LoginGuard] },
     { path: 'Login', component: LoginComponent },
     { path: 'Register', component: RegisterComponent },
     { path: 'News', component: NewsComponent, canActivate: [LoginGuard] },
-    { path: '**', redirectTo: 'Login' },
-    { path: 'Torrents', loadChildren: 'torrent/torrent.module#TorrentModule', canLoad: [LoginGuard] }
+    { path: 'Torrents', pathMatch: 'prefix', loadChildren: './torrent/torrent.module#TorrentModule', canLoad: [LoginGuard] },
+    //{ path: '**', redirectTo: 'Login' }
 ];
 
 @NgModule({
