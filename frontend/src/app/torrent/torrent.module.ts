@@ -6,6 +6,8 @@ import { UploadComponent } from './upload/upload.component';
 import { ReportComponent } from './report/report.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from '../login.guard';
+import { SharedModule } from '../shared/shared.module';
+import { ByteformatPipe } from '../shared/pipes/byteformat.pipe';
 
 const routes: Routes = [
     { path: 'Search', component: SearchComponent, canActivate: [LoginGuard] },
@@ -18,9 +20,15 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forChild(routes),
-        CommonModule
+        CommonModule,
+        SharedModule
     ],
     exports: [RouterModule],
-    declarations: [SearchComponent, DetailsComponent, UploadComponent, ReportComponent]
+    declarations: [
+        SearchComponent,
+        DetailsComponent,
+        UploadComponent,
+        ReportComponent
+    ]
 })
 export class TorrentModule { }

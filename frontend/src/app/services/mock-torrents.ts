@@ -1,4 +1,4 @@
-import { Torrent } from './torrents.service';
+import { Torrent } from '../domain/torrent';
 
 export const TORRENTS: Torrent[] = [{
     id: 1,

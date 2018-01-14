@@ -8,13 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { NewsComponent } from './news/news.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SearchComponent } from './torrents/search/search.component';
-import { TorrentsService } from './torrents/torrents.service';
-import { ByteformatPipe } from './pipes/byteformat.pipe';
 import { RouterModule } from '@angular/router';
 import { LoginGuard } from './login.guard';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/user.service';
+import { TorrentsService } from './services/torrents.service';
+import { SharedModule } from './shared/shared.module';
+import { ByteformatPipe } from './shared/pipes/byteformat.pipe';
 
 
 
@@ -24,8 +24,6 @@ import { UserService } from './services/user.service';
     LoginComponent,
     MenuComponent,
     NewsComponent,
-    SearchComponent,
-    ByteformatPipe,
     RegisterComponent
   ],
   imports: [
@@ -33,7 +31,8 @@ import { UserService } from './services/user.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [TorrentsService, UserService, LoginGuard],
   bootstrap: [AppComponent]

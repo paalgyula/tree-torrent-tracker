@@ -5,12 +5,17 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors, 
     selector: 'app-register',
     templateUrl: './register.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
     public registerForm: FormGroup;
 
-    constructor(fb: FormBuilder) {
-        this.registerForm = fb.group({
+    constructor(private fb: FormBuilder) {
+        this.buildForm();
+    }
+
+    /** Builds the registration reactive form */
+    private buildForm() {
+        this.registerForm = this.fb.group({
             username: ['', [
                 RegisterFormValidation.allowedCharactersInUsername,
                 Validators.minLength(5),
@@ -29,9 +34,6 @@ export class RegisterComponent implements OnInit {
             });
     }
 
-    ngOnInit() {
-    }
-
     onSubmit(): void {
         if (this.registerForm.valid) {
             console.log(this.registerForm.value);
@@ -40,6 +42,10 @@ export class RegisterComponent implements OnInit {
 }
 
 class RegisterFormValidation {
+    /**
+     * This validator checks for alphabet, numerical and '.' '-' '_' characters
+     * @param control FormControl to be validated
+     */
     static allowedCharactersInUsername(control: FormControl) {
         const pattern = /^[0-9a-zA-Z_\-\.]*$/g;
         const username = control.value;
@@ -51,6 +57,10 @@ class RegisterFormValidation {
         };
     }
 
+    /**
+     * Validates the form for same email and password fields
+     * @param control the form what can be validated
+     */
     static MatchPasswordAndEmail(control: AbstractControl): ValidationErrors | null {
         const password = control.get('password').value; // to get value in input tag
         const confirmPassword = control.get('passwordAgain').value; // to get value in input tag
