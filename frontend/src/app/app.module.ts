@@ -14,6 +14,7 @@ import { ByteformatPipe } from './pipes/byteformat.pipe';
 import { RouterModule } from '@angular/router';
 import { LoginGuard } from './login.guard';
 import { LoginService } from './login/login.service';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -24,7 +25,8 @@ import { LoginService } from './login/login.service';
     MenuComponent,
     NewsComponent,
     SearchComponent,
-    ByteformatPipe
+    ByteformatPipe,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

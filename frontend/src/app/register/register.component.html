@@ -1,0 +1,93 @@
+<div>
+    <form #registerForm="ngForm" id="registerForm" autocomplete="off">
+        <div id="loginBox">
+            <div class="row">
+                <div class="label"></div>
+                <div class="field">
+                    <img src="../../assets/images/watermark.png" alt="TheTree™" title="TheTree™"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">
+                    <label for="username">Username</label>:
+                </div>
+                <div class="field">
+                    <input type="text" name="username" id="username" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">
+                    <label for="password" i18n="@@password">Password</label>:
+                </div>
+                <div class="field">
+                    <input type="text" name="password" id="password" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">
+                    <label for="password2" i18n="@@password-again">Password again</label>:
+                </div>
+                <div class="field">
+                    <input type="password" name="password-again" id="password2" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">
+                    <label for="email" i18n="@@email-address">E-Mail address</label>:
+                </div>
+                <div class="field">
+                    <input type="email" name="email" id="email" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">
+                    <label for="email2" i18n="@@email-again">E-Mail again</label>:
+                </div>
+                <div class="field">
+                    <input type="email" name="email-again" id="email2" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="label" th:text="#{profile.gender} + ':'">Gender:</div>
+                <div class="field">
+                    <select name="gender">
+                        <option value="0" selected="selected" i18n="@@male">Male</option>
+                        <option value="1" i18n="@@female">Female</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="label"></div>
+                <div class="field">
+                    <span class="errorstring">
+                        {{errorMessage}}
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label" i18n="@@past15">Elmúltam 15 éves:</div>
+                <div class="field">
+                    <input type="checkbox" name="past15" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">Elfogadom a felhasználási feltételeket:</div>
+                <div class="field">
+                    <input type="checkbox" name="agreeTerms" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"></div>
+                <div class="field">
+                    <div class="button">
+                        <span class="content">regisztráció</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
