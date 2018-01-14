@@ -1,4 +1,4 @@
-import { Torrent } from '../domain/torrent';
+import { Torrent } from '../../shared/domain';
 
 export const TORRENTS: Torrent[] = [{
     id: 1,

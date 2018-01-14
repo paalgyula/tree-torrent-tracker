@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { TORRENTS } from './mock-torrents';
-import { Torrent } from '../domain/torrent';
+import { Torrent } from '../../shared/domain';
 
 @Injectable()
 export class TorrentsService {

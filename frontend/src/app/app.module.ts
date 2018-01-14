@@ -11,8 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { LoginGuard } from './login.guard';
 import { RegisterComponent } from './register/register.component';
-import { UserService } from './services/user.service';
-import { TorrentsService } from './services/torrents.service';
 import { SharedModule } from './shared/shared.module';
 import { ByteformatPipe } from './shared/pipes/byteformat.pipe';
 
@@ -34,7 +32,7 @@ import { ByteformatPipe } from './shared/pipes/byteformat.pipe';
     AppRoutingModule,
     SharedModule
   ],
-  providers: [TorrentsService, UserService, LoginGuard],
+  providers: [LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

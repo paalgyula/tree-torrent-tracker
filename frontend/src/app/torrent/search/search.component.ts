@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TorrentsService } from '../../services/torrents.service';
-import { Torrent } from '../../domain/torrent';
+import { Torrent } from '../../shared/domain/torrent';
+import { TorrentsService } from '../../shared';
 
 @Component({
     selector: 'app-search',

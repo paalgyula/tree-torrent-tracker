@@ -4,6 +4,7 @@ import { MenuComponent } from './menu/menu.component';
 import {
     RouterTestingModule
 } from '@angular/router/testing';
+import { SharedModule } from './shared/shared.module';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -12,7 +13,7 @@ describe('AppComponent', () => {
                 AppComponent,
                 MenuComponent
             ],
-            imports: [ RouterTestingModule ]
+            imports: [RouterTestingModule, SharedModule]
         }).compileComponents();
     }));
     it('should create the app', async(() => {

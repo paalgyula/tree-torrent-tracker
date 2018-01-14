@@ -1,4 +1,4 @@
-import { TrackerUser } from '../domain/tracker-user';
+import { TrackerUser } from '../../shared/domain';
 
 export const LOGIN_DATA: TrackerUser = {
     id: 1,

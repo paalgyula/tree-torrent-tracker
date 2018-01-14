@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TrackerUser } from '../domain/tracker-user';
-import { UserService } from '../services/user.service';
+import { TrackerUser } from '../shared/domain/tracker-user';
+import { UserService } from '../shared';
 
 @Component({
     selector: 'app-menu',

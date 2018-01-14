@@ -1,9 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { TrackerUser } from '../domain/tracker-user';
+
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { LOGIN_DATA } from './login-mock';
+import { TrackerUser } from '../../shared/domain';
 
 const TRACKER_USER_KEY = 'TrackerUser';
 
