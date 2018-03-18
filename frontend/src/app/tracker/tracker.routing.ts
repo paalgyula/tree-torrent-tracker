@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ReportComponent} from './pages/report/report.component';
 import {UploadComponent} from './pages/upload/upload.component';
 import {DownloadComponent} from './pages/download/download.component';
-import {DetailsComponent} from './details/details.component';
+import {DetailsComponent} from './pages/details/details.component';
 import {NewsComponent} from './pages/news/news.component';
 
 const routes: Routes = [

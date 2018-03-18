@@ -182,7 +182,7 @@ select {
   background-position: left top;
 }
 
-#bg_placeholder {
+#bg-placeholder {
   height: 100px;
   min-height: 100px;
 }
@@ -192,9 +192,7 @@ select {
   border: #818181 1px solid;
   width: 899px;
   height: 23px;
-  background-repeat: no-repeat;
-  background-image: url(assets/images/large_window_top.png);
-  background-position: center;
+  background: url(assets/images/large_window_top.png) no-repeat center;
   font-weight: bold;
 }
 
