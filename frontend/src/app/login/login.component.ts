@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         if (this.userService.isLoggedIn) {
-            this.router.navigate(['News']);
+            this.router.navigate(['Tracker','News']);
         }
 
         this.logindata = { username: '', password: '', remember: false };

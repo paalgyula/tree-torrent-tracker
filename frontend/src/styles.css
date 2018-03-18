@@ -450,7 +450,7 @@ select {
 }
 
 
-/* torrent tulajdonsagok -> peerek tablazat */
+/* tracker tulajdonsagok -> peerek tablazat */
 
 .peers_tabla .peernev {
   width: 129px !important;

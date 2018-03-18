@@ -1,7 +1,5 @@
 .nyilas_hivatkozas {
-  background-image: url('../../assets/images/menu-decor-normal.png');
-  background-repeat: no-repeat;
-  background-position: left center;
+  background: url('../../assets/images/menu-decor-normal.png') no-repeat left center;
   padding-left: 24px;
 }
 
